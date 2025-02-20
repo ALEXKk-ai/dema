@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>categories</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #9b59b6;
+    padding: 47px 47px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header .logo {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+   font-family: Arial, sans-serif;
+   font-size: 1.2rem;
+   color: whitesmoke;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   height: 70px;
+}
+
+.logo-text {
+   position: relative;
+   z-index: 1;
+   transform: translateX(5px);
+}
+
+.dema {
+   font-weight: 900;
+   letter-spacing: 1px;
+}
+
+.foods {
+   font-weight: 400;
+}
+
+.logo::before {
+   content: "";
+   position: absolute;
+   width: 70px;
+   height: 70px;
+   border: 2px solid white;
+   border-radius: 50%;
+   left: -10px;
+   top: -2px;
+   clip-path: polygon(0 0, 95% 0, 95% 95%, 90% 100%, 0 100%, 0 0);
+}
+
+.hamburger-menu {
+    position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 30px;
+            height: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 2;
+}
+
+.hamburger-menu div {
+   width: 100%;
+   height: 4px;
+   background: white;
+   border-radius: 2px;
+}
+.profile-icon {
+    position: absolute;
+    top: 20px;
+    right: 70px; /* Position it to the left of hamburger menu */
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.profile-circle {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-head {
+    width: 14px;
+    height: 14px;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 6px;
+}
+
+.profile-body {
+    width: 20px;
+    height: 12px;
+    background: black;
+    border-radius: 6px 6px 0 0;
+    position: absolute;
+    bottom: 6px;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Start off-screen on the right */
+    width: 300px; /* Fixed width */
+    height: 100%;
+    background-color: white;
+    z-index: 1000;
+    overflow-y: auto;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu-overlay.active {
+    right: 0; /* Slide in from right */
+}
+
+.menu-content {
+    padding: 50px 20px;
+    text-align: right; /* Changed from right to left alignment */
+}
+
+.menu-overlay nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu-overlay nav ul li {
+    margin: 20px 0;
+}
+
+.menu-overlay nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+}
+
+.close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.overlay-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    backdrop-filter: blur(3px);
+}
+
+.overlay-backdrop.active {
+    display: block;
+}
+
+body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+/* Update the menu-overlay CSS */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: white;
+    z-index: 1000;
+    overflow-y: auto;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+</style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <div class="logo-text">
+                <span class="dema">Dema</span><span class="foods">Foods</span>
+            </div>
+        </div>
+        <a href="profile.html" class="profile-icon">
+            <div class="profile-circle">
+                <div class="profile-head"></div>
+                <div class="profile-body"></div>
+            </div>
+        </a>
+        <div class="hamburger-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+
+<div class="menu-overlay">
+    <div class="menu-content">
+        <div class="close-menu">&times;</div>
+        <nav>
+            <ul>
+                <li><a href="top-restaurants.html">Top Restaurants</a></li>
+                <li><a href="drinks.html">Drinks</a></li>
+                <li><a href="group-dishes.html">Group Dishes</a></li>
+                <li><a href="bakeries.html">Bakeries</a></li>
+                <li><a href="ice-cream.html">Ice Cream Parlors</a></li>
+                <li><a href="coupons.html">coupons</a></li>
+                <li><a href="referrals.html">referrals</a></li>
+                <li><a href="about.html">about</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+</script>
+<script>
+           const hamburgerMenu = document.querySelector('.hamburger-menu');
+const menuOverlay = document.querySelector('.menu-overlay');
+const closeMenu = document.querySelector('.close-menu');
+
+hamburgerMenu.addEventListener('click', () => {
+    menuOverlay.classList.add('active');
+});
+
+closeMenu.addEventListener('click', () => {
+    menuOverlay.classList.remove('active');
+});
+
+// Optional: Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!menuOverlay.contains(e.target) && !hamburgerMenu.contains(e.target)) {
+        menuOverlay.classList.remove('active');
+    }
+});
+const body = document.body;
+const overlay = document.createElement('div');
+overlay.className = 'overlay-backdrop';
+document.body.appendChild(overlay);
+
+hamburgerMenu.addEventListener('click', () => {
+    menuOverlay.classList.add('active');
+    overlay.classList.add('active');
+    body.classList.add('menu-open');
+});
+
+closeMenu.addEventListener('click', () => {
+    menuOverlay.classList.remove('active');
+    overlay.classList.remove('active');
+    body.classList.remove('menu-open');
+});
+
+// Update the existing document click event listener
+document.addEventListener('click', (e) => {
+    if (!menuOverlay.contains(e.target) && !hamburgerMenu.contains(e.target)) {
+        menuOverlay.classList.remove('active');
+        overlay.classList.remove('active');
+        body.classList.remove('menu-open');
+    }
+});
+</script>
+</body>
+</html>
