@@ -37,13 +37,17 @@
     flex-direction: column;
     padding: 20px;
     padding-top: 80px; 
+    margin-bottom: 40px;
 }
 
        
         .second-container {
             width: 100%;
-            padding: 40px 20px;
+            min-height: 68vh;
             background: rgb(233,248,245);
+            padding: 20px;
+            padding-top: 80px;
+            margin-top: 60px;
         }
 
         .third-container {
@@ -1140,6 +1144,49 @@ body.modal-open {
             }
         }
         
+        .section-heading {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+
+        .section-heading h2 {
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-subtext {
+            color: #666;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .section-heading h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-subtext {
+                font-size: 1rem;
+            }
+
+            .section-heading {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-heading h2 {
+                font-size: 1.6rem;
+            }
+
+            .section-subtext {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1228,6 +1275,11 @@ body.modal-open {
     
     
     <div class="second-container">
+        <div class="section-heading">
+            <h2>Explore Our Services</h2>
+            <p class="section-subtext">Discover what we have to offer</p>
+        </div>
+
         <div class="image-row">
             <div class="card supper-column">
                 <div class="card-image-wrapper">
