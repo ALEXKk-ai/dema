@@ -42,10 +42,8 @@
        
         .second-container {
             width: 100%;
-            min-height: 68vh;
+            padding: 40px 20px;
             background: rgb(233,248,245);
-            padding: 20px;
-            padding-top: 40px;
         }
 
         .third-container {
@@ -60,106 +58,116 @@
         }
         
         .image-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-            margin-top: 30px;   
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .image-column, .hotel-column, .supper-column {
-            flex: 1;
-            min-width: 300px;
-            max-width: 350px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
             margin: 0 auto;
         }
+        .card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        .supper-image, .deliver-image, .hotel-image {
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .card-image-wrapper {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .card-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    .card:hover .card-image-wrapper img {
+        transform: scale(1.05);
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+
+    .supper-title, .deliver-title, .hotel-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 12px;
+    }
+
+    .supper-description {
+        margin-bottom: 15px;
+    }
+
+    .main-text, .sub-text {
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.5;
+        margin-bottom: 5px;
+    }
+    .action-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background: #9b59b6;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+    }
+
+    .action-button:hover {
+        background: #8e44ad;
+        transform: translateX(5px);
+    }
+    @media (max-width: 968px) {
+        .image-row {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            padding: 0 10px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .second-container {
+            padding: 20px 10px;
+        }
+
+        .card {
+            border-radius: 12px;
+        }
+
+        .card-image-wrapper {
+            height: 180px;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+        .supper-title, .deliver-title, .hotel-title {
+            font-size: 1.2rem;
+        }
+
+        .main-text, .sub-text {
+            font-size: 0.85rem;
+        }
+
+        .action-button {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 0px;
+            text-align: center;
+            padding: 12px;
         }
-        .supper-order, .deliver-signup, .hotel-register {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
+    }
 
-.supper-order:hover, .deliver-signup:hover, .hotel-register:hover {
-    opacity: 0.8;
-}
-
-        .hotel-text{
-            text-align: left;
-            margin-top: 5px;
-            color: black;
-            font-family: Arial, sans-serif;
-        }
-
-        .hotel-title{
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .hotel-register{
-            font-size: 0.95rem;
-            margin-bottom: 10px;
-            text-decoration: underline;
-        }
-
-        .deliver-text {
-            text-align: left;
-            margin-top: 5px;
-            color: black;
-            font-family: Arial, sans-serif;
-        }
-
-        .deliver-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .deliver-signup {
-            font-size: 0.95rem;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
-        .supper-text {
-            text-align: left;
-            margin-top: 5px;
-            color: black;
-            font-family: Arial, sans-serif;
-        }
-
-        .supper-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .supper-description.main.text {
-            font-size: 0.7rem;
-            margin-bottom: 3.5px;
-            line-height: 1.5;
-        }
-
-        .supper-description.sub.text {
-            font-size: 0.7rem;
-            margin-bottom: 3.5px;
-            line-height: 1.5;
-        }
-
-        .supper-order {
-            font-size: 0.95rem;
-            cursor: pointer;
-            text-decoration: underline;
-        }
 
        
 .header .logo {
@@ -306,13 +314,13 @@
 
         .text-container .main-text {
     font-size: clamp(2rem, 5vw, 3.5rem);
-
+color: white;
             font-weight: bold;
         }
 
         .text-container .sub-text {
             font-size: clamp(1.5rem, 3vw, 1.5rem);
-
+color: white;
         }
 
        
@@ -1221,28 +1229,37 @@ body.modal-open {
     
     <div class="second-container">
         <div class="image-row">
-            <div class="supper-column">
-                <img src="images/supper.jpg" alt="Supper" class="supper-image">
-                <div class="supper-text">
+            <div class="card supper-column">
+                <div class="card-image-wrapper">
+                    <img src="images/supper.jpg" alt="Supper" class="supper-image">
+                </div>
+                <div class="card-content">
                     <div class="supper-title">Dema super supper</div>
-                    <div class="supper-description main text">Enjoy delicious meals every evening with our weekly</div>
-                    <div class="supper-description sub text">supper subscription—convenient and delivered straight to your door!</div>
-                    <a href="order.html" class="supper-order">Order now</a>
+                    <div class="supper-description">
+                        <p class="main-text">Enjoy delicious meals every evening with our weekly</p>
+                        <p class="sub-text">supper subscription—convenient and delivered straight to your door!</p>
+                    </div>
+                    <a href="order.html" class="action-button">Order now</a>
                 </div>
             </div>
-            <div class="image-column">
-                <img src="images/deliver.jpg" alt="Delivery" class="deliver-image">
-                <div class="deliver-text">
+
+            <div class="card image-column">
+                <div class="card-image-wrapper">
+                    <img src="images/deliver.jpg" alt="Delivery" class="deliver-image">
+                </div>
+                <div class="card-content">
                     <div class="deliver-title">Join Our Delivery Team</div>
-                    <a href="deliver.html" class="deliver-signup">sign up to deliver</a>
+                    <a href="deliver.html" class="action-button">Sign up to deliver</a>
                 </div>
             </div>
             
-            <div class="hotel-column">
-                <img src="images/hotel.jpg" alt="Hotel" class="hotel-image">
-                <div class="hotel-text">
+            <div class="card hotel-column">
+                <div class="card-image-wrapper">
+                    <img src="images/hotel.jpg" alt="Hotel" class="hotel-image">
+                </div>
+                <div class="card-content">
                     <div class="hotel-title">Your restaurant</div>
-                    <a href="hotel.html" class="hotel-register">List your restaurant</a>
+                    <a href="hotel.html" class="action-button">List your restaurant</a>
                 </div>
             </div>
         </div>
@@ -1356,7 +1373,7 @@ body.modal-open {
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Dema Drinks. All rights reserved.</p>
+                <p>&copy; 2024 Dema Foods. All rights reserved.</p>
             </div>
         </footer>
     </div>
