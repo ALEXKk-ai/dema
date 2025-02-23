@@ -373,186 +373,172 @@ color: white;
 
         .drawing-gallery {
     display: flex;
-    gap: 20px;
-    margin-top: 4cm;
+    gap: 25px;
+    margin-top: 30px;
     padding: 20px;
     width: 100%;
     overflow-x: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    justify-content: center; /* Center the items */
+    -webkit-overflow-scrolling: touch;
+    justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    max-width: 1200px; 
+    max-width: 1200px;
 }
 
-/* Hide scrollbar but keep functionality */
 .drawing-gallery::-webkit-scrollbar {
     display: none;
 }
 
-/* Update the drawing styles */
 .drawing {
-    flex: 0 0 auto; /* Prevent shrinking and growing */
-    width: 200px; /* Fixed width */
-}
-.drawing-gallery-wrapper {
-    width: 100%;
+    flex: 0 0 auto;
+    width: 150px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.circle {
+    width: 150px;
+    height: 150px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    padding: 0 20px; /* Add some padding on the sides */
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Keep rectangles consistent size */
-.rectangle {
-    width: 200px;
-    height: 200px;
-    margin: 0;
+.circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
+.drawing:hover .circle,
+.drawing:active .circle,
+.drawing:focus .circle {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
 
+.drawing:hover img {
+    transform: scale(1.1);
+}
 
-        .rectangle {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(to bottom, gray 50%, goldenrod);
-            border-radius: 15px;
-            border: 2px solid black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: transform;
-            touch-action: manipulation;
-        }
+.label {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 8px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+}
 
-        .drawing:hover .rectangle,
-        .drawing:active .rectangle,
-        .drawing:focus .rectangle {
-            transform: scale(1.2);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-            z-index: 1;
-        }
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: white;
+    z-index: 1000;
+    overflow-y: auto;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+}
 
-        .rectangle img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            position: absolute;
-        }
+.menu-overlay.active {
+    right: 0;
+}
 
-        .label {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: goldenrod;
-            padding: 3px 8px;
-            border-radius: 15px;
-            font-size: o.5rem;
-            color: black;
-            text-align: center;
-            font-weight: bold;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-        }
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 300px;
-            height: 100%;
-            background-color: white;
-            z-index: 1000;
-            overflow-y: auto;
-            transition: right 0.3s ease-in-out;
-            box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
-        }
+.menu-content {
+    padding: 80px 20px 20px;
+    text-align: right;
+}
 
-        .menu-overlay.active {
-            right: 0;
-        }
+.close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    border-radius: 50%;
+    color: #333;
+    transition: all 0.2s ease;
+}
 
-        .menu-content {
-            padding: 80px 20px 20px;
-            text-align: right;
-        }
+.close-menu:hover {
+    background: #e5e5e5;
+    transform: rotate(90deg);
+}
 
-        .close-menu {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f5f5f5;
-            border-radius: 50%;
-            color: #333;
-            transition: all 0.2s ease;
-        }
+.menu-overlay nav ul {
+    list-style-type: none;
+    padding: 0;
+}
 
-        .close-menu:hover {
-            background: #e5e5e5;
-            transform: rotate(90deg);
-        }
+.menu-overlay nav ul li {
+    margin: 15px 0;
+    padding: 10px 0;
+    border-bottom: 1px solid #f5f5f5;
+}
 
-        .menu-overlay nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
+.menu-overlay nav ul li:last-child {
+    border-bottom: none;
+}
 
-        .menu-overlay nav ul li {
-            margin: 15px 0;
-            padding: 10px 0;
-            border-bottom: 1px solid #f5f5f5;
-        }
+.menu-overlay nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    display: block;
+    text-align: right;
+    padding-right: 15px;
+}
 
-        .menu-overlay nav ul li:last-child {
-            border-bottom: none;
-        }
+.menu-overlay nav ul li a:hover {
+    color: #9b59b6;
+    transform: translateX(-5px);
+}
 
-        .menu-overlay nav ul li a {
-            text-decoration: none;
-            color: #333;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
-            display: block;
-            text-align: right;
-            padding-right: 15px;
-        }
+.overlay-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    backdrop-filter: blur(3px);
+}
 
-        .menu-overlay nav ul li a:hover {
-            color: #9b59b6;
-            transform: translateX(-5px);
-        }
+.overlay-backdrop.active {
+    display: block;
+}
 
-        .overlay-backdrop {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            backdrop-filter: blur(3px);
-        }
-
-        .overlay-backdrop.active {
-            display: block;
-        }
-
-        body.menu-open {
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-        }
+body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
 
 .location-modal {
     display: none;
@@ -574,8 +560,8 @@ color: white;
     width: 80%;
     max-width: 600px;
     position: relative;
-    height: 70vh; /* Increased height to 70% of the viewport height */
-    max-height: 700px; /* Optional: add a maximum height */
+    height: 70vh;
+    max-height: 700px;
     display: flex;
     flex-direction: column;
 }
@@ -654,7 +640,7 @@ body.modal-open {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Prevent scrolling */
+    overflow: hidden;
     background-color: rgba(0,0,0,0.4);
 }
         @media (max-width: 768px) {
@@ -707,12 +693,12 @@ body.modal-open {
     .drawing-gallery {
         margin-top: 2cm;
         padding: 15px;
-        justify-content: flex-start; /* Align items to start */
-        scroll-snap-type: x mandatory; /* Optional: Snap scrolling */
+        justify-content: flex-start;
+        scroll-snap-type: x mandatory;
     }
 
     .drawing {
-        scroll-snap-align: start; /* Optional: Snap alignment */
+        scroll-snap-align: start;
         width: 200px;
     }
 
@@ -726,13 +712,13 @@ body.modal-open {
 
 
 .rectangle img {
-    width: 100px;     /* Increased image size proportionally */
+    width: 100px;
     height: 100px;
 }
 
 .label {
-    font-size: 0.6rem;  /* Slightly larger font for better readability */
-    padding: 4px 10px;  /* Larger padding for better touch targets */
+    font-size: 0.6rem;
+    padding: 4px 10px;
 }
 
            
@@ -778,12 +764,12 @@ body.modal-open {
                 left: 15px;
             }
             .drawing-gallery {
-                padding: 10px 5px; /* Reduced side padding to accommodate larger rectangles */
+                padding: 10px 5px;
                 gap: 20px;
             }
 
             .rectangle {
-                width: 200px;    /* Even larger on smaller screens */
+                width: 200px;
                 height: 200px;
             }
             .hamburger-menu {
@@ -1106,11 +1092,11 @@ body.modal-open {
 
         /* Specific icon colors */
         .contact-link i.fa-envelope {
-            color: #9b59b6 !important; /* Purple email icon */
+            color: #9b59b6 !important;
         }
 
         .contact-link i.fa-phone {
-            color: #9b59b6 !important; /* Purple phone icon */
+            color: #9b59b6 !important;
         }
 
         .contact-link i {
@@ -1187,6 +1173,79 @@ body.modal-open {
                 font-size: 0.9rem;
             }
         }
+
+        .food-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            padding: 0 20px;
+        }
+
+        .food-description p {
+            color: white;
+            font-size: 1.8rem;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .highlight-group {
+            font-style: italic;
+            font-weight: 700;
+        }
+
+        .highlight {
+            position: relative;
+            display: inline-block;
+            padding: 0 4px;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 6px;
+            width: 100%;
+            height: 8px;
+            background-color: #FFD700;
+            opacity: 0.6;
+            z-index: -1;
+            border-radius: 2px;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .food-description {
+                margin-top: 50px;
+                margin-bottom: 15px;
+            }
+
+            .food-description p {
+                font-size: 1.4rem;
+            }
+
+            .highlight::after {
+                bottom: 4px;
+                height: 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .food-description {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+
+            .food-description p {
+                font-size: 1.2rem;
+            }
+
+            .highlight::after {
+                bottom: 3px;
+                height: 5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1227,47 +1286,58 @@ body.modal-open {
                 </button>
             </div>
         </div>
-        <div class="order-now">Order now!!</div>
+        <div class="food-description">
+            <p>Delicious food and drinks from local restaurants at 
+                <span class="highlight-group">
+                    <span class="highlight">student</span>
+                    <span class="highlight">friendly</span>
+                    <span class="highlight">prices</span>
+                </span>. 
+                <span class="highlight-group">
+                    <span class="highlight">Fast</span>
+                    <span class="highlight">fresh</span>
+                </span>, and affordable!</p>
+        </div>
     
         <div class="drawing-gallery">
             <a href="top-restaurants.html">
             <div class="drawing">
-                <div class="rectangle">
-                    <div class="label">Top Restaurants</div>
+                <div class="circle">
                     <img src="images/top-restaurant.jpg" alt="Top restaurant">
                 </div>
+                <div class="label">Top Restaurants</div>
             </div>
             </a>
             <a href="drinks.html">
             <div class="drawing">
-                <div class="rectangle">
-                    <div class="label">Drinks</div>
+                <div class="circle">
                     <img src="images/drinks.jpg" alt="Drinks">
                 </div>
+                <div class="label">Drinks</div>
             </div>
             </a>
             <a href="group-dishes.html">
             <div class="drawing">
-                <div class="rectangle">
-                    <div class="label">Group Dishes</div>
+                <div class="circle">
                     <img src="images/group-dishes.jpg" alt="Group Dishes">
                 </div>
+                <div class="label">Group Dishes</div>
             </div>
             </a>
             <a href="bakeries.html">
             <div class="drawing">
-                <div class="rectangle">
-                    <div class="label">Bakeries</div>
+                <div class="circle">
                     <img src="images/bakeries.jpg" alt="Bakeries">
                 </div>
+                <div class="label">Bakeries</div>
             </div>
             </a>
             <a href="ice-cream.html">
             <div class="drawing">
-                <div class="rectangle">
-                    <div class="label">Ice cream parlors</div>
+                <div class="circle">
                     <img src="images/ice-cream.jpg" alt="Ice cream">
-            </div>
+                </div>
+                <div class="label">Ice cream parlors</div>
             </div>
             </a>
         </div>
@@ -1633,6 +1703,55 @@ window.addEventListener('click', (event) => {
                 locationSuggestionsContainer.classList.remove('show');
             }
         });
-    </script>
+        // Function to apply highlights to specific text elements
+function applyHighlights() {
+    // Get all highlight elements
+    const highlightElements = document.querySelectorAll('.highlight');
+    
+    highlightElements.forEach(element => {
+        // Get the computed height of the text element
+        const elementHeight = element.offsetHeight;
+        
+        // Create highlight div
+        const highlightDiv = document.createElement('div');
+        highlightDiv.style.position = 'absolute';
+        highlightDiv.style.left = '0';
+        highlightDiv.style.bottom = '4px'; // Matches your CSS bottom value
+        highlightDiv.style.width = '100%';
+        highlightDiv.style.height = `${elementHeight * 0.25}px`; // 25% of text height
+        highlightDiv.style.backgroundColor = '#FFD700';
+        highlightDiv.style.opacity = '0.4';
+        highlightDiv.style.zIndex = '-1';
+        
+        // Ensure parent element has position relative if not already set
+        if (window.getComputedStyle(element).position === 'static') {
+            element.style.position = 'relative';
+        }
+        
+        // Add the highlight div
+        element.appendChild(highlightDiv);
+    });
+    
+    // Update highlights on window resize
+    window.addEventListener('resize', () => {
+        // Remove existing highlight divs
+        document.querySelectorAll('.highlight div').forEach(div => div.remove());
+        // Reapply highlights
+        applyHighlights();
+    });
+}
+
+// Apply highlights when DOM is loaded
+document.addEventListener('DOMContentLoaded', applyHighlights);
+
+// If you need to reapply highlights after dynamic content changes
+function refreshHighlights() {
+    // Remove existing highlight divs
+    document.querySelectorAll('.highlight div').forEach(div => div.remove());
+    // Reapply highlights
+    applyHighlights();
+}
+</script>
 </body>
 </html>
+        
