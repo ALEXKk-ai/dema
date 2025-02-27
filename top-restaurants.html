@@ -7,7 +7,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #f5f5f5; 
+            padding: 20px; 
+            scroll-behavior: smooth; 
+        }
         body.no-scroll { overflow: hidden; }
 
         .navigation-bar {
@@ -97,8 +102,6 @@
         .dish-info { padding: 10px 0; text-align: left; }
         .dish-name { font-size: 14px; font-weight: 600; margin-bottom: 5px; }
         .dish-price { color: #666; font-size: 12px; }
-        .discount-badge { position: absolute; top: 10px; left: 10px; background: #ff4444; color: white;
-            padding: 5px; border-radius: 5px; font-size: 12px; }
 
         .add-button { position: absolute; bottom: 8px; right: 8px; width: 35px; height: 35px;
             background: #000000; color: white; border: none; border-radius: 50%; font-size: 20px;
@@ -111,20 +114,106 @@
         .quantity-display { font-size: 16px; width: 40px; text-align: center; }
         .order-disabled { background: #cccccc !important; cursor: not-allowed !important; }
         .fixed-order-btn { 
-    position: fixed; 
-    bottom: 20px; 
-    left: 50%; 
-    transform: translateX(-50%); /* Centers it horizontally */
-    width: 200px; 
-    padding: 15px; 
-    background: #9b59b6; 
-    color: white; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    z-index: 10; 
-}
-        .button-container { text-align: center; margin: 20px 0; } /* New class to center the button */
+            position: fixed; 
+            bottom: 20px; 
+            left: 50%; 
+            transform: translateX(-50%);
+            width: 200px; 
+            padding: 15px; 
+            background: #9b59b6; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            z-index: 10; 
+        }
+        .button-container { text-align: center; margin: 20px 0; }
+
+        /* Custom Notification Styles */
+        .notification-overlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.6); display: none; justify-content: center; 
+            align-items: center; z-index: 2000; 
+        }
+        .notification-content { 
+            background: white; padding: 20px; border-radius: 10px; 
+            width: 90%; max-width: 400px; text-align: center; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
+        }
+        .notification-content h3 { 
+            color: #9b59b6; font-size: 22px; margin-bottom: 15px; 
+        }
+        .notification-content p { 
+            color: #333; font-size: 16px; margin-bottom: 20px; 
+        }
+        .notification-content button { 
+            padding: 10px 20px; background: #9b59b6; color: white; 
+            border: none; border-radius: 5px; cursor: pointer; 
+            transition: background 0.3s ease; 
+        }
+        .notification-content button:hover { background: #8a4ca6; }
+        .notification-error h3 { color: #ff4444; }
+
+        /* Error Input Style */
+        .error-input { border: 2px solid #ff4444; }
+
+        /* Custom Dropdown for Schedule Delivery */
+        .custom-dropdown {
+            position: relative;
+            width: 100%;
+            margin: 10px 0;
+        }
+        .dropdown-selected {
+            padding: 15px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dropdown-selected:after {
+            content: '\f078'; /* FontAwesome chevron-down */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        .dropdown-menu.show {
+            display: block;
+        }
+        .dropdown-option {
+            padding: 15px;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .dropdown-option:hover {
+            background: #f0f0f0;
+        }
+
+        /* Cart-specific Styles */
+        .cart-item-price { font-size: 14px; color: #666; }
+        .cart-location-notice { 
+            font-size: 12px; 
+            color: #ff4444; 
+            font-style: italic; 
+            margin-top: 5px; 
+        }
 
         @media (max-width: 1200px) {
             .restaurant-grid, .dishes-expanded, .category-suggestions { grid-template-columns: repeat(3, 1fr); }
@@ -156,6 +245,13 @@
             <div id="locationOptions"></div>
         </div>
     </div>
+    <div id="notificationModal" class="notification-overlay">
+        <div class="notification-content" id="notificationContent">
+            <h3 id="notificationTitle"></h3>
+            <p id="notificationMessage"></p>
+            <button onclick="closeNotification()">OK</button>
+        </div>
+    </div>
 
     <script>
         const restaurants = [
@@ -176,7 +272,7 @@
         const dishes = {
             midcity: {
                 "Chapati Dishes": [
-                    { id: 1, name: "Chapati", price: 10, itemDeliveryFee: 3, image: "/api/placeholder/400/320", discount: "Student Special" },
+                    { id: 1, name: "Chapati", price: 10, itemDeliveryFee: 3, image: "/api/placeholder/400/320" },
                     { id: 2, name: "Chapati(3) Beans", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
                     { id: 3, name: "Chapati(2) Ndengu", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
                     { id: 4, name: "Chapati(2) Mix", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
@@ -199,7 +295,7 @@
                     { id: 19, name: "Rice Minji Waru", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
                     { id: 20, name: "Rice Matumbo", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
                     { id: 21, name: "Rice Beef", price: 120, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
-                    { id: 22, name: "Rice Kuku", price: 140, itemDeliveryFee: 5, image: "/api/placeholder/400/320" } // Fixed duplicate ID
+                    { id: 22, name: "Rice Kuku", price: 140, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
                 ],
                 "Pilau Dishes": [
                     { id: 23, name: "Pilau plain", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
@@ -345,7 +441,7 @@
                 <div class="home-banner">
                     <img src="/images/school_food.jpg" alt="School Food Banner" class="banner-image" loading="lazy">
                     <div class="banner-overlay">
-                        <h2 class="banner-title">Fuel Up for Class!</h2>
+                        <h2 class="banner-title">Welcome to Your Food Haven</h2>
                     </div>
                 </div>
                 <div class="navigation-bar">
@@ -375,7 +471,6 @@
                     `).join('')}
                 </div>
             `;
-            if (!selectedHall) openLocationModal(null, 'initial');
         }
 
         function showRestaurantMenu(restaurantId) {
@@ -450,26 +545,27 @@
         }
 
         function openLocationModal(restaurantId, context) {
-    const modal = document.getElementById('locationModal');
-    const optionsDiv = document.getElementById('locationOptions');
-    optionsDiv.innerHTML = `
-        <div class="zone-group">
-            <div class="zone-title">Base Prices</div>
-            <div class="hall-option" onclick="updateDishPrices(0, ${restaurantId}, 'View Base Prices', '${context}'); ${context !== 'initial' ? 'closeLocationModal()' : ''}">View Base Prices</div>
-        </div>
-        ${locations.map(zone => `
-            <div class="zone-group">
-                <div class="zone-title">${zone.zone}</div>
-                ${zone.halls.map(hall => `
-                    <div class="hall-option" onclick="updateDishPrices(${zone.deliveryFee}, ${restaurantId}, '${hall}', '${context}'); ${context !== 'initial' ? 'closeLocationModal()' : ''}">${hall}</div>
+            const modal = document.getElementById('locationModal');
+            const optionsDiv = document.getElementById('locationOptions');
+            optionsDiv.innerHTML = `
+                <div class="zone-group">
+                    <div class="zone-title">Base Prices</div>
+                    <div class="hall-option" onclick="updateDishPrices(0, ${restaurantId}, 'View Base Prices', '${context}'); closeLocationModal()">View Base Prices</div>
+                </div>
+                ${locations.map(zone => `
+                    <div class="zone-group">
+                        <div class="zone-title">${zone.zone}</div>
+                        ${zone.halls.map(hall => `
+                            <div class="hall-option" onclick="updateDishPrices(${zone.deliveryFee}, ${restaurantId}, '${hall}', '${context}'); closeLocationModal()">${hall}</div>
+                        `).join('')}
+                    </div>
                 `).join('')}
-            </div>
-        `).join('')}
-    `;
-    modal.style.display = 'flex';
-    document.body.classList.add('no-scroll');
-    document.getElementById('locationSearch').focus();
-}
+            `;
+            modal.style.display = 'flex';
+            document.body.classList.add('no-scroll');
+            const searchInput = document.getElementById('locationSearch');
+            searchInput.focus();
+        }
 
         function closeLocationModal() {
             const modal = document.getElementById('locationModal');
@@ -519,7 +615,6 @@
                             <div class="dish-wrapper" tabindex="0" onclick="showDishDetail(${dish.id}, ${restaurants.find(r => r.name.toLowerCase().replace(/\s+/g, '') === restaurantKey).id}, '${category}')">
                                 <div class="dish-item">
                                     <img src="${dish.image}" alt="${dish.name}" class="dish-image" loading="lazy">
-                                    ${dish.discount ? `<span class="discount-badge">${dish.discount}</span>` : ''}
                                     <button class="add-button" aria-label="Add ${dish.name} to cart" onclick="event.stopPropagation(); addToCart(${dish.id}, ${restaurants.find(r => r.name.toLowerCase().replace(/\s+/g, '') === restaurantKey).id}, '${category}', 1)">+</button>
                                 </div>
                                 <div class="dish-info">
@@ -570,7 +665,6 @@
                             <div class="dish-wrapper" tabindex="0" onclick="showDishDetail(${dish.id}, ${restaurants.find(r => r.name.toLowerCase().replace(/\s+/g, '') === restaurantKey).id}, '${category}')">
                                 <div class="dish-item">
                                     <img src="${dish.image}" alt="${dish.name}" class="dish-image" loading="lazy">
-                                    ${dish.discount ? `<span class="discount-badge">${dish.discount}</span>` : ''}
                                     <button class="add-button" aria-label="Add ${dish.name} to cart" onclick="event.stopPropagation(); addToCart(${dish.id}, ${restaurants.find(r => r.name.toLowerCase().replace(/\s+/g, '') === restaurantKey).id}, '${category}', 1)">+</button>
                                 </div>
                                 <div class="dish-info">
@@ -585,94 +679,94 @@
         }
 
         function updateDishPrices(deliveryFee, restaurantId, hallName, context) {
-    selectedDeliveryFee = parseInt(deliveryFee) || 0;
-    selectedHall = hallName === 'View Base Prices' ? '' : hallName;
-    localStorage.setItem('deliveryFee', selectedDeliveryFee);
-    localStorage.setItem('selectedHall', selectedHall);
-    if (context === 'menu') showRestaurantMenu(restaurantId);
-    else if (context === 'order') showDishDetail(currentDishId, restaurantId, currentCategory);
-    else if (context === 'cart') showCart();
-}
+            selectedDeliveryFee = parseInt(deliveryFee) || 0;
+            selectedHall = hallName === 'View Base Prices' ? '' : hallName;
+            localStorage.setItem('deliveryFee', selectedDeliveryFee);
+            localStorage.setItem('selectedHall', selectedHall);
+            if (context === 'menu') showRestaurantMenu(restaurantId);
+            else if (context === 'order') showDishDetail(currentDishId, restaurantId, currentCategory);
+            else if (context === 'cart') showCart();
+        }
 
         let currentDishId = null;
         let currentCategory = null;
 
         function showDishDetail(dishId, restaurantId, category) {
-    currentDishId = dishId;
-    currentCategory = category;
-    const restaurant = restaurants.find(r => r.id === restaurantId);
-    const restaurantKey = restaurant.name.toLowerCase().replace(/\s+/g, '');
-    const dish = dishes[restaurantKey][category].find(d => d.id === dishId);
-    const mainContent = document.getElementById('mainContent');
-    const locationText = selectedHall ? `Current Location: ${selectedHall}` : "Add Your Address";
-    const isLocationSet = selectedDeliveryFee !== 0;
-    const totalPrice = isLocationSet ? calculateTotal(dish.price, dish.itemDeliveryFee, selectedDeliveryFee, 1) : dish.price;
+            currentDishId = dishId;
+            currentCategory = category;
+            const restaurant = restaurants.find(r => r.id === restaurantId);
+            const restaurantKey = restaurant.name.toLowerCase().replace(/\s+/g, '');
+            const dish = dishes[restaurantKey][category].find(d => d.id === dishId);
+            const mainContent = document.getElementById('mainContent');
+            const locationText = selectedHall ? `Current Location: ${selectedHall}` : "Add Your Address";
+            const isLocationSet = selectedDeliveryFee !== 0;
+            const totalPrice = isLocationSet ? calculateTotal(dish.price, dish.itemDeliveryFee, selectedDeliveryFee, 1) : dish.price;
 
-    mainContent.innerHTML = `
-        <div class="menu-view">
-            <div class="navigation-bar">
-                <button class="back-btn" onclick="showRestaurantMenu(${restaurantId})" aria-label="Back to menu"><i class="fas fa-arrow-left"></i></button>
-                <div class="search-wrapper">
-                    <div class="search-container">
-                        <input type="text" class="search-input" placeholder="Search ${category} items..." onkeyup="searchCategorySuggestions(this.value, '${restaurantKey}', '${category}', ${dish.id}, ${restaurantId})">
-                        <i class="fas fa-search search-icon"></i>
+            mainContent.innerHTML = `
+                <div class="menu-view">
+                    <div class="navigation-bar">
+                        <button class="back-btn" onclick="showRestaurantMenu(${restaurantId})" aria-label="Back to menu"><i class="fas fa-arrow-left"></i></button>
+                        <div class="search-wrapper">
+                            <div class="search-container">
+                                <input type="text" class="search-input" placeholder="Search ${category} items..." onkeyup="searchCategorySuggestions(this.value, '${restaurantKey}', '${category}', ${dish.id}, ${restaurantId})">
+                                <i class="fas fa-search search-icon"></i>
+                            </div>
+                        </div>
+                        <button class="cart-btn" onclick="showCart()" aria-label="View cart"><i class="fas fa-shopping-cart"></i><span class="cart-badge">${cart.length}</span></button>
                     </div>
-                </div>
-                <button class="cart-btn" onclick="showCart()" aria-label="View cart"><i class="fas fa-shopping-cart"></i><span class="cart-badge">${cart.length}</span></button>
-            </div>
-            <div style="background: white; padding: 20px; border-radius: 10px;">
-                <img src="${dish.image}" alt="${dish.name}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 10px;" loading="lazy">
-                <h2 style="margin: 20px 0;">${dish.name}</h2>
-                <div style="margin: 20px 0;">
-                    <p>Total Price: <span id="totalPrice">${isLocationSet ? `KES ${totalPrice}` : 'Select location for full price'}</span></p>
-                    <div class="location-wrapper">
-                        <div class="location-container">
-                            <label for="location"><i class="fas fa-map-pin"></i> Select Your Location${isLocationSet ? ' (Optional)' : ''}:</label>
-                            <select id="location" onchange="updateDishPrices(this.value, ${restaurantId}, this.options[this.selectedIndex].text, 'order')">
-                                <option value="0" ${selectedDeliveryFee === 0 ? 'selected' : ''}>${selectedHall ? locationText : 'View Base Prices'}</option>
-                                ${locations.map(zone => `
-                                    <optgroup label="${zone.zone}">
-                                        ${zone.halls.map(hall => `
-                                            <option value="${zone.deliveryFee}" ${selectedHall === hall ? 'selected' : ''}>${hall}</option>
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <img src="${dish.image}" alt="${dish.name}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 10px;" loading="lazy">
+                        <h2 style="margin: 20px 0;">${dish.name}</h2>
+                        <div style="margin: 20px 0;">
+                            <p>Total Price: <span id="totalPrice">${isLocationSet ? `KES ${totalPrice}` : 'Select location for full price'}</span></p>
+                            <div class="location-wrapper">
+                                <div class="location-container">
+                                    <label for="location"><i class="fas fa-map-pin"></i> Select Your Location${isLocationSet ? ' (Optional)' : ''}:</label>
+                                    <select id="location" onchange="updateDishPrices(this.value, ${restaurantId}, this.options[this.selectedIndex].text, 'order')">
+                                        <option value="0" ${selectedDeliveryFee === 0 ? 'selected' : ''}>${selectedHall ? locationText : 'View Base Prices'}</option>
+                                        ${locations.map(zone => `
+                                            <optgroup label="${zone.zone}">
+                                                ${zone.halls.map(hall => `
+                                                    <option value="${zone.deliveryFee}" ${selectedHall === hall ? 'selected' : ''}>${hall}</option>
+                                                `).join('')}
+                                            </optgroup>
                                         `).join('')}
-                                    </optgroup>
-                                `).join('')}
-                            </select>
-                            <button class="location-button" onclick="openLocationModal(${restaurantId}, 'order')">${locationText}</button>
-                            <span class="location-hint">${selectedDeliveryFee === 0 ? 'Set location for full pricing' : `Delivery in ${locations.find(z => z.halls.includes(selectedHall))?.estTime || 'Unknown time'}`}</span>
+                                    </select>
+                                    <button class="location-button" onclick="openLocationModal(${restaurantId}, 'order')">${locationText}</button>
+                                    <span class="location-hint">${selectedDeliveryFee === 0 ? 'Set location for full pricing' : `Delivery in ${locations.find(z => z.halls.includes(selectedHall))?.estTime || 'Unknown time'}`}</span>
+                                </div>
+                            </div>
+                            <div class="quantity-wrapper">
+                                <label for="quantity">Quantity:</label>
+                                <button class="quantity-btn" onclick="updateQuantity(-1, ${dish.price}, ${dish.itemDeliveryFee}, ${selectedDeliveryFee}, ${dish.id}, ${restaurantId}, '${category}')">-</button>
+                                <span id="quantity" class="quantity-display">1</span>
+                                <button class="quantity-btn" onclick="updateQuantity(1, ${dish.price}, ${dish.itemDeliveryFee}, ${selectedDeliveryFee}, ${dish.id}, ${restaurantId}, '${category}')">+</button>
+                            </div>
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" value="${userProfile.phone}" placeholder="e.g., 0712345678" style="width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #e0e0e0; border-radius: 5px;">
                         </div>
                     </div>
-                    <div class="quantity-wrapper">
-                        <label for="quantity">Quantity:</label>
-                        <button class="quantity-btn" onclick="updateQuantity(-1, ${dish.price}, ${dish.itemDeliveryFee}, ${selectedDeliveryFee}, ${dish.id}, ${restaurantId}, '${category}')">-</button>
-                        <span id="quantity" class="quantity-display">1</span>
-                        <button class="quantity-btn" onclick="updateQuantity(1, ${dish.price}, ${dish.itemDeliveryFee}, ${selectedDeliveryFee}, ${dish.id}, ${restaurantId}, '${category}')">+</button>
+                    <div class="button-container">
+                        <button class="fixed-order-btn" onclick="addToCart(${dish.id}, ${restaurantId}, '${category}', parseInt(document.getElementById('quantity').textContent))">Add to Cart</button>
                     </div>
-                    <label for="phone">Phone Number:</label>
-                    <input type="tel" id="phone" value="${userProfile.phone}" placeholder="e.g., 0712345678" style="width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #e0e0e0; border-radius: 5px;">
+                    <div id="categorySuggestions" class="category-suggestions">
+                        ${dishes[restaurantKey][category].filter(d => d.id !== dishId).map(item => `
+                            <div class="dish-wrapper" tabindex="0" onclick="showDishDetail(${item.id}, ${restaurantId}, '${category}')">
+                                <div class="dish-item">
+                                    <img src="${item.image}" alt="${item.name}" class="dish-image" loading="lazy">
+                                    <button class="add-button" aria-label="Add ${item.name} to cart" onclick="event.stopPropagation(); addToCart(${item.id}, ${restaurantId}, '${category}', 1)">+</button>
+                                </div>
+                                <div class="dish-info">
+                                    <h4 class="dish-name">${item.name}</h4>
+                                    <span class="dish-price">KES ${selectedDeliveryFee === 0 ? item.price : item.price + item.itemDeliveryFee + selectedDeliveryFee}</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
                 </div>
-            </div>
-            <div class="button-container">
-                <button class="fixed-order-btn" onclick="addToCart(${dish.id}, ${restaurantId}, '${category}', parseInt(document.getElementById('quantity').textContent))">Place Order</button>
-            </div>
-            <div id="categorySuggestions" class="category-suggestions">
-                ${dishes[restaurantKey][category].filter(d => d.id !== dishId).map(item => `
-                    <div class="dish-wrapper" tabindex="0" onclick="showDishDetail(${item.id}, ${restaurantId}, '${category}')">
-                        <div class="dish-item">
-                            <img src="${item.image}" alt="${item.name}" class="dish-image" loading="lazy">
-                            ${item.discount ? `<span class="discount-badge">${item.discount}</span>` : ''}
-                            <button class="add-button" aria-label="Add ${item.name} to cart" onclick="event.stopPropagation(); addToCart(${item.id}, ${restaurantId}, '${category}', 1)">+</button>
-                        </div>
-                        <div class="dish-info">
-                            <h4 class="dish-name">${item.name}</h4>
-                            <span class="dish-price">KES ${selectedDeliveryFee === 0 ? item.price : item.price + item.itemDeliveryFee + selectedDeliveryFee}</span>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-        </div>
-    `;
-}
+            `;
+        }
+
         function updateQuantity(change, basePrice, itemDeliveryFee, locationDeliveryFee, dishId, restaurantId, category) {
             const quantityElement = document.getElementById('quantity');
             let quantity = parseInt(quantityElement.textContent);
@@ -692,7 +786,6 @@
                 <div class="dish-wrapper" tabindex="0" onclick="showDishDetail(${item.id}, ${restaurantId}, '${category}')">
                     <div class="dish-item">
                         <img src="${item.image}" alt="${item.name}" class="dish-image" loading="lazy">
-                        ${item.discount ? `<span class="discount-badge">${item.discount}</span>` : ''}
                         <button class="add-button" aria-label="Add ${item.name} to cart" onclick="event.stopPropagation(); addToCart(${item.id}, ${restaurantId}, '${category}', 1)">+</button>
                     </div>
                     <div class="dish-info">
@@ -703,13 +796,38 @@
             `).join('');
         }
 
+        function showNotification(title, message, isError = false) {
+            const modal = document.getElementById('notificationModal');
+            const titleElement = document.getElementById('notificationTitle');
+            const messageElement = document.getElementById('notificationMessage');
+            const content = document.getElementById('notificationContent');
+
+            titleElement.textContent = title;
+            messageElement.textContent = message;
+            if (isError) content.classList.add('notification-error');
+            else content.classList.remove('notification-error');
+
+            modal.style.display = 'flex';
+            document.body.classList.add('no-scroll');
+
+            if (!isError) {
+                setTimeout(closeNotification, 3000);
+            }
+        }
+
+        function closeNotification() {
+            const modal = document.getElementById('notificationModal');
+            modal.style.display = 'none';
+            document.body.classList.remove('no-scroll');
+        }
+
         function addToCart(dishId, restaurantId, category, quantity) {
             const restaurantKey = restaurants.find(r => r.id === restaurantId).name.toLowerCase().replace(/\s+/g, '');
             const dish = dishes[restaurantKey][category].find(d => d.id === dishId);
             cart.push({ ...dish, restaurantId, quantity });
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartBadge();
-            alert(`${dish.name} (x${quantity}) added to cart!`);
+            showNotification('Added to Cart', `${dish.name} (x${quantity}) has been added to your cart!`);
             showRestaurantMenu(restaurantId);
         }
 
@@ -717,6 +835,7 @@
             const mainContent = document.getElementById('mainContent');
             const total = cart.reduce((sum, item) => sum + calculateTotal(item.price, item.itemDeliveryFee, selectedDeliveryFee, item.quantity), 0);
             const locationText = selectedHall ? `Current Location: ${selectedHall}` : "Add Your Address";
+            const isLocationSet = selectedDeliveryFee !== 0;
 
             mainContent.innerHTML = `
                 <div class="menu-view">
@@ -732,7 +851,8 @@
                                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
                                     <div>
                                         <h4>${item.name} (x${item.quantity})</h4>
-                                        <p>KES ${calculateTotal(item.price, item.itemDeliveryFee, selectedDeliveryFee, item.quantity)}</p>
+                                        <p class="cart-item-price">KES ${isLocationSet ? calculateTotal(item.price, item.itemDeliveryFee, selectedDeliveryFee, item.quantity) : item.price * item.quantity}</p>
+                                        ${!isLocationSet ? '<p class="cart-location-notice">Add your location to include delivery fees</p>' : ''}
                                     </div>
                                     <button onclick="removeFromCart(${index})" style="background: #ff4444; color: white; border: none; padding: 5px 10px; border-radius: 5px;">Remove</button>
                                 </div>
@@ -755,14 +875,18 @@
                                     <span class="location-hint">${selectedDeliveryFee === 0 ? 'Set location to order' : `Delivery in ${locations.find(z => z.halls.includes(selectedHall))?.estTime || 'Unknown time'}`}</span>
                                 </div>
                             </div>
+                            <label for="schedule">Schedule Delivery:</label>
+                            <div class="custom-dropdown">
+                                <div class="dropdown-selected" id="dropdownSelected">Now</div>
+                                <div class="dropdown-menu" id="dropdownMenu">
+                                    <div class="dropdown-option" onclick="selectSchedule('now')">Now</div>
+                                    <div class="dropdown-option" onclick="selectSchedule('12pm')">Lunch (12 PM)</div>
+                                    <div class="dropdown-option" onclick="selectSchedule('6pm')">Dinner (6 PM)</div>
+                                </div>
+                            </div>
+                            <input type="hidden" id="schedule" value="now">
                             <label for="phone">Phone Number:</label>
                             <input type="tel" id="phone" value="${userProfile.phone}" placeholder="e.g., 0712345678" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #e0e0e0; border-radius: 5px;">
-                            <label for="schedule">Schedule Delivery:</label>
-                            <select id="schedule" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #e0e0e0; border-radius: 5px;">
-                                <option value="now">Now</option>
-                                <option value="12pm">Lunch (12 PM)</option>
-                                <option value="6pm">Dinner (6 PM)</option>
-                            </select>
                             <button id="placeOrderBtn" style="width: 100%; padding: 15px; background: ${selectedDeliveryFee === 0 ? '#cccccc' : '#9b59b6'}; color: white; border: none; border-radius: 5px; cursor: ${selectedDeliveryFee === 0 ? 'not-allowed' : 'pointer'};" onclick="placeOrder()" ${selectedDeliveryFee === 0 ? 'disabled' : ''}>
                                 Place Order
                             </button>
@@ -770,6 +894,26 @@
                     `}
                 </div>
             `;
+
+            const dropdownSelected = document.getElementById('dropdownSelected');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            dropdownSelected.addEventListener('click', () => {
+                dropdownMenu.classList.toggle('show');
+            });
+            document.addEventListener('click', (e) => {
+                if (!dropdownSelected.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+        }
+
+        function selectSchedule(value) {
+            const dropdownSelected = document.getElementById('dropdownSelected');
+            const scheduleInput = document.getElementById('schedule');
+            const displayText = value === 'now' ? 'Now' : value === '12pm' ? 'Lunch (12 PM)' : 'Dinner (6 PM)';
+            dropdownSelected.textContent = displayText;
+            scheduleInput.value = value;
+            document.getElementById('dropdownMenu').classList.remove('show');
         }
 
         function removeFromCart(index) {
@@ -780,12 +924,16 @@
         }
 
         function placeOrder() {
-            const phone = document.getElementById('phone').value;
+            const phoneInput = document.getElementById('phone');
+            const phone = phoneInput.value;
             const schedule = document.getElementById('schedule').value;
+
             if (!phone || !/^\d{10}$/.test(phone)) {
-                alert('Please enter a valid 10-digit phone number.');
+                phoneInput.classList.add('error-input');
+                showNotification('Error', 'Please enter a valid 10-digit phone number.', true);
                 return;
             }
+            phoneInput.classList.remove('error-input');
             userProfile.phone = phone;
             localStorage.setItem('userProfile', JSON.stringify(userProfile));
 
