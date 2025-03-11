@@ -13,34 +13,33 @@
         }
 
         .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #9b59b6;
-    padding: 47px 47px;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #9b59b6;
+            padding: 47px 47px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.container {
-    width: 100%;
-    min-height: 70vh;
-    background: #9b59b6;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 20px;
-    padding-top: 80px; 
-    margin-bottom: 40px;
-}
+        .container {
+            width: 100%;
+            min-height: 70vh;
+            background: #9b59b6;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            padding-top: 80px;
+            margin-bottom: 40px;
+        }
 
-       
         .second-container {
             width: 100%;
             min-height: 68vh;
@@ -56,6 +55,7 @@
             background: black;
             padding: 20px;
         }
+
         .content {
             flex: 1;
             padding: 20px;
@@ -68,155 +68,158 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        .card {
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    }
-
-    .card-image-wrapper {
-        width: 100%;
-        height: 200px;
-        overflow: hidden;
-    }
-
-    .card-image-wrapper img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-    }
-    .card:hover .card-image-wrapper img {
-        transform: scale(1.05);
-    }
-
-    .card-content {
-        padding: 20px;
-    }
-
-    .supper-title, .deliver-title, .hotel-title {
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: #333;
-        margin-bottom: 12px;
-    }
-
-    .supper-description {
-        margin-bottom: 15px;
-    }
-
-    .main-text, .sub-text {
-        font-size: 0.9rem;
-        color: #666;
-        line-height: 1.5;
-        margin-bottom: 5px;
-    }
-    .action-button {
-        display: inline-block;
-        padding: 10px 20px;
-        background: #9b59b6;
-        color: white;
-        text-decoration: none;
-        border-radius: 25px;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-        margin-top: 10px;
-    }
-
-    .action-button:hover {
-        background: #8e44ad;
-        transform: translateX(5px);
-    }
-    @media (max-width: 968px) {
-        .image-row {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            padding: 0 10px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .second-container {
-            padding: 20px 10px;
-        }
 
         .card {
-            border-radius: 12px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
         .card-image-wrapper {
-            height: 180px;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-image-wrapper img {
+            transform: scale(1.05);
         }
 
         .card-content {
-            padding: 15px;
+            padding: 20px;
         }
+
         .supper-title, .deliver-title, .hotel-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .supper-description {
+            margin-bottom: 15px;
         }
 
         .main-text, .sub-text {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 5px;
         }
 
         .action-button {
-            width: 100%;
-            text-align: center;
-            padding: 12px;
+            display: inline-block;
+            padding: 10px 20px;
+            background: #9b59b6;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-top: 10px;
         }
-    }
 
+        .action-button:hover {
+            background: #8e44ad;
+            transform: translateX(5px);
+        }
 
-       
-.header .logo {
-    position: absolute;
-    top: 20px;
-    left: 30px;
-   font-family: Arial, sans-serif;
-   font-size: 1.2rem;
-   color: whitesmoke;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   height: 70px;
-}
+        @media (max-width: 968px) {
+            .image-row {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                padding: 0 10px;
+            }
+        }
 
-.logo-text {
-   position: relative;
-   z-index: 1;
-   transform: translateX(5px);
-}
+        @media (max-width: 480px) {
+            .second-container {
+                padding: 20px 10px;
+            }
 
-.dema {
-   font-weight: 900;
-   letter-spacing: 1px;
-}
+            .card {
+                border-radius: 12px;
+            }
 
-.foods {
-   font-weight: 400;
-}
+            .card-image-wrapper {
+                height: 180px;
+            }
 
-.logo::before {
-   content: "";
-   position: absolute;
-   width: 70px;
-   height: 70px;
-   border: 2px solid white;
-   border-radius: 50%;
-   left: -10px;
-   top: -2px;
-   clip-path: polygon(0 0, 95% 0, 95% 95%, 90% 100%, 0 100%, 0 0);
-}
+            .card-content {
+                padding: 15px;
+            }
 
-.hamburger-menu {
-    position: absolute;
+            .supper-title, .deliver-title, .hotel-title {
+                font-size: 1.2rem;
+            }
+
+            .main-text, .sub-text {
+                font-size: 0.85rem;
+            }
+
+            .action-button {
+                width: 100%;
+                text-align: center;
+                padding: 12px;
+            }
+        }
+
+        .header .logo {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-family: Arial, sans-serif;
+            font-size: 1.2rem;
+            color: whitesmoke;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 70px;
+        }
+
+        .logo-text {
+            position: relative;
+            z-index: 1;
+            transform: translateX(5px);
+        }
+
+        .dema {
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .foods {
+            font-weight: 400;
+        }
+
+        .logo::before {
+            content: "";
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border: 2px solid white;
+            border-radius: 50%;
+            left: -10px;
+            top: -2px;
+            clip-path: polygon(0 0, 95% 0, 95% 95%, 90% 100%, 0 100%, 0 0);
+        }
+
+        .hamburger-menu {
+            position: absolute;
             top: 20px;
             right: 20px;
             width: 30px;
@@ -225,63 +228,56 @@
             flex-direction: column;
             justify-content: space-between;
             z-index: 2;
-}
+        }
 
-.hamburger-menu div {
-   width: 100%;
-   height: 4px;
-   background: white;
-   border-radius: 2px;
-}
-.profile-icon {
-    position: absolute;
-    top: 20px;
-    right: 70px; /* Position it to the left of hamburger menu */
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
+        .hamburger-menu div {
+            width: 100%;
+            height: 4px;
+            background: white;
+            border-radius: 2px;
+        }
 
-.profile-circle {
-    width: 100%;
-    height: 100%;
-    background: white;
-    border-radius: 50%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .profile-icon {
+            position: absolute;
+            top: 20px;
+            right: 70px;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
 
-.profile-head {
-    width: 12px;
-    height: 12px;
-    background: black;
-    border-radius: 50%;
-    position: absolute;
-    top: 6px;
-}
+        .profile-circle {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.profile-body {
-    width: 18px;
-    height: 10px;
-    background: black;
-    border-radius: 6px 6px 0 0;
-    position: absolute;
-    bottom: 6px;
-}
+        .profile-head {
+            width: 12px;
+            height: 12px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 6px;
+        }
 
-
-
-.container {
-   margin-top: 80px;
-}
-
-        
+        .profile-body {
+            width: 18px;
+            height: 10px;
+            background: black;
+            border-radius: 6px 6px 0 0;
+            position: absolute;
+            bottom: 6px;
+        }
 
         .gif-container {
             margin-top: 1cm;
@@ -317,50 +313,79 @@
         }
 
         .text-container .main-text {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-color: white;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: white;
             font-weight: bold;
         }
 
         .text-container .sub-text {
             font-size: clamp(1.5rem, 3vw, 1.5rem);
-color: white;
+            color: white;
         }
 
-       
+        .search-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            width: 450px;
+            margin-left: 5.5cm;
+            margin-top: 1.8cm;
+            position: relative;
+        }
 
-.location-container {
-    background-color: white;
-    border-radius: 10px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    width: 450px;
-    margin-left: 5.5cm;
-    margin-top: 1.8cm;
-}
+        .input-box {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
 
-.input-box {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    background: white;
-    padding: 10px;
-    border-radius: 5px;
-}
+        .input-box i {
+            margin-right: 10px;
+            color: #444;
+        }
 
-.input-box i {
-    margin-right: 10px;
-    color: #444;
-}
+        .input-box input {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            font-size: 16px;
+        }
 
-.input-box input {
-    border: none;
-    outline: none;
-    flex-grow: 1;
-    font-size: 16px;
-}
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            list-style-type: none;
+            padding: 0;
+            margin: 5px 0 0;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+        }
 
+        .search-suggestions li {
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-suggestions li:hover {
+            background-color: #f1f1f1;
+        }
+
+        .search-suggestions.show {
+            display: block;
+        }
 
         .order-now {
             margin-top: 13px;
@@ -386,7 +411,6 @@ color: white;
     margin-right: auto;
     max-width: 1200px;
 }
-
 .drawing-gallery::-webkit-scrollbar {
     display: none;
 }
@@ -399,250 +423,158 @@ color: white;
     align-items: center;
     gap: 12px;
 }
+        .circle {
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
 
-.circle {
-    width: 150px;
-    height: 150px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    transition: all 0.3s ease;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
+        .circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
 
-.circle img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
+        .drawing:hover .circle,
+        .drawing:active .circle,
+        .drawing:focus .circle {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
 
-.drawing:hover .circle,
-.drawing:active .circle,
-.drawing:focus .circle {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-}
+        .drawing:hover img {
+            transform: scale(1.1);
+        }
 
-.drawing:hover img {
-    transform: scale(1.1);
-}
+        .label {
+            color: white;
+            font-size: 0.95rem;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 8px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
+            padding: 4px 8px;
+            background: rgba(218, 165, 32, 0.8);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
 
-.label {
-    color: white;
-    font-size: 1.2rem;
-    text-align: center;
-    font-weight: 600;
-    margin-top: 8px;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    letter-spacing: 0.5px;
-}
+        .label:hover {
+            background: rgba(218, 165, 32, 0.9);
+            transform: translateY(-2px);
+        }
 
-.menu-overlay {
-    position: fixed;
-    top: 0;
-    right: -300px;
-    width: 300px;
-    height: 100%;
-    background-color: white;
-    z-index: 1000;
-    overflow-y: auto;
-    transition: right 0.3s ease-in-out;
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
-}
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: white;
+            z-index: 1000;
+            overflow-y: auto;
+            transition: right 0.3s ease-in-out;
+            box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+        }
 
-.menu-overlay.active {
-    right: 0;
-}
+        .menu-overlay.active {
+            right: 0;
+        }
 
-.menu-content {
-    padding: 80px 20px 20px;
-    text-align: right;
-}
+        .menu-content {
+            padding: 80px 20px 20px;
+            text-align: right;
+        }
 
-.close-menu {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 24px;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f5f5f5;
-    border-radius: 50%;
-    color: #333;
-    transition: all 0.2s ease;
-}
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            border-radius: 50%;
+            color: #333;
+            transition: all 0.2s ease;
+        }
 
-.close-menu:hover {
-    background: #e5e5e5;
-    transform: rotate(90deg);
-}
+        .close-menu:hover {
+            background: #e5e5e5;
+            transform: rotate(90deg);
+        }
 
-.menu-overlay nav ul {
-    list-style-type: none;
-    padding: 0;
-}
+        .menu-overlay nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-.menu-overlay nav ul li {
-    margin: 15px 0;
-    padding: 10px 0;
-    border-bottom: 1px solid #f5f5f5;
-}
+        .menu-overlay nav ul li {
+            margin: 15px 0;
+            padding: 10px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
 
-.menu-overlay nav ul li:last-child {
-    border-bottom: none;
-}
+        .menu-overlay nav ul li:last-child {
+            border-bottom: none;
+        }
 
-.menu-overlay nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 1.1rem;
-    font-weight: 500;
-    transition: color 0.2s ease;
-    display: block;
-    text-align: right;
-    padding-right: 15px;
-}
+        .menu-overlay nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            display: block;
+            text-align: right;
+            padding-right: 15px;
+        }
 
-.menu-overlay nav ul li a:hover {
-    color: #9b59b6;
-    transform: translateX(-5px);
-}
+        .menu-overlay nav ul li a:hover {
+            color: #9b59b6;
+            transform: translateX(-5px);
+        }
 
-.overlay-backdrop {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    backdrop-filter: blur(3px);
-}
+        .overlay-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            backdrop-filter: blur(3px);
+        }
 
-.overlay-backdrop.active {
-    display: block;
-}
+        .overlay-backdrop.active {
+            display: block;
+        }
 
-body.menu-open {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-}
+        body.menu-open {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
 
-.location-modal {
-    display: none;
-    position: fixed;
-    z-index: 1100;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-}
-
-.location-modal-content {
-    background-color: #fefefe;
-    margin: 5% auto;
-    padding: 20px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 600px;
-    position: relative;
-    height: 70vh;
-    max-height: 700px;
-    display: flex;
-    flex-direction: column;
-}
-
-.close-modal {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close-modal:hover {
-    color: black;
-}
-
-.location-search-container {
-    margin-top: 20px;
-}
-
-.location-search-container .input-box {
-    display: flex;
-    align-items: center;
-    background: #f1f1f1;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.location-search-container .input-box i {
-    margin-right: 10px;
-    color: #444;
-}
-
-.location-search-container .input-box input {
-    border: none;
-    outline: none;
-    flex-grow: 1;
-    font-size: 16px;
-    background: transparent;
-}
-.location-suggestions {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 10px;
-    max-height: 250px;
-    overflow-y: auto;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    display: none;
-}
-
-.location-suggestions li {
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.location-suggestions li:hover {
-    background-color: #f1f1f1;
-}
-
-.location-suggestions.show {
-    display: block;
-}
-body.modal-open {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-}
-
-.location-modal {
-    position: fixed;
-    z-index: 1100;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: rgba(0,0,0,0.4);
-}
         @media (max-width: 768px) {
             .image-row {
                 justify-content: center;
@@ -653,45 +585,45 @@ body.modal-open {
                 min-width: 280px;
             }
 
-            .drawing-gallery {
-                padding: 15px;
-            }
+
+            
 
             .rectangle {
                 width: 200px;
                 height: 200px;
             }
+
             .footer {
-        flex-direction: column;
-        text-align: left;
-        padding: 15px;
-    }
+                flex-direction: column;
+                text-align: left;
+                padding: 15px;
+            }
 
-    .footer-left{
-        flex-basis: 100%;
-        margin-top: 20px;
-    }
-.footer-right{
-    text-align: left;
-    margin-top: 30px;
+            .footer-left {
+                flex-basis: 100%;
+                margin-top: 20px;
+            }
 
-}
-    .footer-center {
-        text-align: left;
-        margin-bottom: 20px;
-    }
+            .footer-right {
+                text-align: left;
+                margin-top: 30px;
+            }
 
-    .footer-contact main {
-        text-align: left;
-        
-    }
-        .footer-contact sub{
-        text-align: left;
-    
-           
-    }
+            .footer-center {
+                text-align: left;
+                margin-bottom: 20px;
+            }
+
+            .footer-contact main {
+                text-align: left;
+            }
+
+            .footer-contact sub {
+                text-align: left;
+            }
+
+            
     .drawing-gallery {
-        margin-top: 2cm;
         padding: 15px;
         justify-content: flex-start;
         scroll-snap-type: x mandatory;
@@ -699,63 +631,50 @@ body.modal-open {
 
     .drawing {
         scroll-snap-align: start;
-        width: 200px;
+        width: 200px; 
     }
 
-    .rectangle {
-        width: 200px;
-        height: 200px;
-    }
-}
 
+            .rectangle {
+                width: 200px;
+                height: 200px;
+            }
+        }
 
+        .rectangle img {
+            width: 100px;
+            height: 100px;
+        }
 
-
-.rectangle img {
-    width: 100px;
-    height: 100px;
-}
-
-.label {
-    font-size: 0.6rem;
-    padding: 4px 10px;
-}
-
-           
+        .label {
+            font-size: 1.1rem;
+            padding: 5px 12px;
+        }
 
         @media (max-width: 480px) {
-          
             .header {
-       padding: 47px;
-   }  
-   
-   .gif-container {
-        margin-left: auto;
-        margin-right: auto;
-        width: 170px;  
-        height: 170px; 
-        margin-top: 1.3cm;
-    }
-    
-    .text-container {
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 20px;
-    }
+                padding: 47px;
+            }
 
+            .gif-container {
+                margin-left: auto;
+                margin-right: auto;
+                width: 170px;
+                height: 170px;
+                margin-top: 2.5cm;
+            }
 
+            .text-container {
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 20px;
+            }
 
+            .text-container .main-text {
+                font-weight: bold;
+            }
 
-
-.text-container .main-text {
-
-    font-weight: bold;
-}
-
-
-
-            
             .container, .second-container, .third-container {
                 padding: 10px;
             }
@@ -763,6 +682,7 @@ body.modal-open {
             .logo {
                 left: 15px;
             }
+
             .drawing-gallery {
                 padding: 10px 5px;
                 gap: 20px;
@@ -772,81 +692,71 @@ body.modal-open {
                 width: 200px;
                 height: 200px;
             }
+
             .hamburger-menu {
                 right: 15px;
             }
-            .location-container {
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-        justify-content: center;
-        margin-top: 20px;
-    }
-    .order-now {
-        margin-top: 20px;
-        text-align: center;
-    }
-    .location-modal-content {
-        width: 95%;
-        margin: 10% auto;
-        height: 60vh;
-        max-height: 500px;
-        padding: 15px;
-    }
 
-    .location-suggestions {
-        max-height: 200px;
-    }
+            .search-container {
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 20px;
+            }
 
-    .location-search-container {
-        margin-top: 10px;
-    }
+            .order-now {
+                margin-top: 20px;
+                text-align: center;
+            }
 
-    .location-modal h2 {
-        font-size: 1.2rem;
-        margin-bottom: 15px;
-    }
+            .drawing-gallery {
+                margin-top: 1.5cm;
+                padding: 10px;
+            }
 
-    .close-modal {
-        font-size: 24px;
-        padding: 5px;
-    }
+            .footer-left {
+                font-size: 0.7rem;
+            }
 
-    .location-suggestions li {
-        padding: 12px;
-        font-size: 14px;
-    }
+            .footer-right {
+                font-size: 0.7rem;
+            }
+
+            .footer-center {
+                font-size: 0.8rem;
+            }
+
+            .footer-contact main {
+                font-size: 0.75rem;
+            }
+
+            .footer-contact sub {
+                font-size: 0.7rem;
+            }
+        }
+        @media (min-width: 769px) {
     .drawing-gallery {
-        margin-top: 1.5cm;
-        padding: 10px;
-    }
-    
-
-    .footer-left{
-        font-size: 0.7rem;
-    }
-.footer-right{
-    font-size: 0.7rem;
-}
-    .footer-center {
-      font-size:0.8rem ;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 columns */
+        grid-template-rows: repeat(2, auto); /* 2 rows */
+        overflow-x: hidden; /* Remove horizontal scrolling */
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
     }
 
-    .footer-contact main {
-        font-size:0.75rem ;
-    }
-        .footer-contact sub{
-        font-size: 0.7rem;
-           
+    .drawing {
+        width: 100%; /* Full width of grid cell */
+        max-width: 150px; /* Maintain max width for consistency */
+        margin: 0 auto; /* Center items in grid cells */
     }
 }
-.additional-sections {
+        .additional-sections {
             width: 100%;
             margin-top: 50px;
             padding: 0 20px;
         }
 
-        /* Features Section */
         .features-section {
             padding: 40px 0;
             background: #f9f9f9;
@@ -885,7 +795,6 @@ body.modal-open {
             margin-bottom: 15px;
         }
 
-        /* How It Works Section */
         .how-it-works {
             padding: 40px 0;
             text-align: center;
@@ -917,7 +826,6 @@ body.modal-open {
             font-weight: bold;
         }
 
-        /* App Download Section */
         .app-download {
             background: #9b59b6;
             color: white;
@@ -944,7 +852,6 @@ body.modal-open {
             height: 40px;
         }
 
-        /* Footer */
         .site-footer {
             background: #333;
             color: white;
@@ -1025,7 +932,6 @@ body.modal-open {
             border-top: 1px solid #444;
         }
 
-        /* Responsive Adjustments */
         @media (max-width: 768px) {
             .features-grid,
             .steps-container {
@@ -1068,7 +974,6 @@ body.modal-open {
             }
         }
 
-        /* Update social media and contact styles */
         .contact-info {
             display: flex;
             flex-direction: column;
@@ -1090,7 +995,6 @@ body.modal-open {
             transform: translateX(5px);
         }
 
-        /* Specific icon colors */
         .contact-link i.fa-envelope {
             color: #9b59b6 !important;
         }
@@ -1110,12 +1014,10 @@ body.modal-open {
             opacity: 0.9;
         }
 
-        /* Hover effects */
         .contact-link:hover i {
             transform: scale(1.1);
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .contact-info {
                 align-items: center;
@@ -1129,7 +1031,7 @@ body.modal-open {
                 transform: scale(1.05);
             }
         }
-        
+
         .section-heading {
             text-align: center;
             margin-bottom: 50px;
@@ -1149,7 +1051,6 @@ body.modal-open {
             margin-top: 10px;
         }
 
-        /* Responsive styles */
         @media (max-width: 768px) {
             .section-heading h2 {
                 font-size: 1.8rem;
@@ -1190,31 +1091,26 @@ body.modal-open {
             font-weight: 500;
         }
 
-        .highlight-group {
-            font-style: italic;
-            font-weight: 700;
-        }
-
         .highlight {
             position: relative;
             display: inline-block;
             padding: 0 4px;
+            font-style: italic; /* Make the highlighted words italic */
         }
 
         .highlight::after {
             content: '';
             position: absolute;
             left: 0;
-            bottom: 6px;
+            bottom: 0;
             width: 100%;
-            height: 8px;
-            background-color: #FFD700;
+            height: 25%; /* Covers a quarter of the height from the bottom */
+            background-color: #FFD700; /* Gold color */
             opacity: 0.6;
             z-index: -1;
             border-radius: 2px;
         }
 
-        /* Mobile responsiveness */
         @media (max-width: 768px) {
             .food-description {
                 margin-top: 50px;
@@ -1223,11 +1119,6 @@ body.modal-open {
 
             .food-description p {
                 font-size: 1.4rem;
-            }
-
-            .highlight::after {
-                bottom: 4px;
-                height: 6px;
             }
         }
 
@@ -1240,10 +1131,34 @@ body.modal-open {
             .food-description p {
                 font-size: 1.2rem;
             }
+        }
 
-            .highlight::after {
-                bottom: 3px;
-                height: 5px;
+        @media (max-width: 1024px) {
+            .label {
+                font-size: 1.2rem;
+                padding: 4px 8px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .label {
+                font-size: 1.1rem;
+                padding: 4px 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .label {
+                font-size: 1rem;
+                padding: 3px 6px;
+                margin-top: 6px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .label {
+                font-size: 0.9rem;
+                padding: 3px 6px;
             }
         }
     </style>
@@ -1268,8 +1183,6 @@ body.modal-open {
         </div>
     </header>
 
-
-
     <div class="container">
         <div class="gif-container">
             <img src="images/gif1.gif" class="active" id="gif1">
@@ -1277,72 +1190,91 @@ body.modal-open {
         </div>
         <div class="text-container">
             <div class="main-text">Food and Drinks</div>
-            <div class="sub-text">delivered where you are </div>
+            <div class="sub-text">delivered where you are</div>
         </div>
-        <div class="location-container">
+        <div class="search-container">
             <div class="input-box">
-                <i class="fas fa-map-marker-alt"></i>
-                <input type="text" placeholder="What's your address?">
-                </button>
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search DemaFoods...">
             </div>
+            <ul id="searchSuggestions" class="search-suggestions"></ul>
         </div>
         <div class="food-description">
             <p>Delicious food and drinks from local restaurants at 
-                <span class="highlight-group">
-                    <span class="highlight">student</span>
-                    <span class="highlight">friendly</span>
-                    <span class="highlight">prices</span>
-                </span>. 
-                <span class="highlight-group">
-                    <span class="highlight">Fast</span>
-                    <span class="highlight">fresh</span>
-                </span>, and affordable!</p>
+                <span class="highlight">student</span> 
+                <span class="highlight">friendly</span> 
+                <span class="highlight">prices</span>. 
+                <span class="highlight">Fast</span> 
+                <span class="highlight">fresh</span>, and affordable!</p>
         </div>
     
         <div class="drawing-gallery">
             <a href="top-restaurants.html">
-            <div class="drawing">
-                <div class="circle">
-                    <img src="images/top-restaurant.jpg" alt="Top restaurant">
+                <div class="drawing">
+                    <div class="circle">
+                        <img src="images/top-restaurant.jpg" alt="Top restaurant">
+                    </div>
+                    <div class="label">Top Restaurants</div>
                 </div>
-                <div class="label">Top Restaurants</div>
-            </div>
             </a>
             <a href="drinks.html">
-            <div class="drawing">
-                <div class="circle">
-                    <img src="images/drinks.jpg" alt="Drinks">
+                <div class="drawing">
+                    <div class="circle">
+                        <img src="images/drinks.jpg" alt="Drinks">
+                    </div>
+                    <div class="label">Drinks</div>
                 </div>
-                <div class="label">Drinks</div>
-            </div>
             </a>
             <a href="group-dishes.html">
-            <div class="drawing">
-                <div class="circle">
-                    <img src="images/group-dishes.jpg" alt="Group Dishes">
+                <div class="drawing">
+                    <div class="circle">
+                        <img src="images/group-dishes.jpg" alt="Group Dishes">
+                    </div>
+                    <div class="label">Group Dishes</div>
                 </div>
-                <div class="label">Group Dishes</div>
-            </div>
             </a>
             <a href="bakeries.html">
-            <div class="drawing">
-                <div class="circle">
-                    <img src="images/bakeries.jpg" alt="Bakeries">
+                <div class="drawing">
+                    <div class="circle">
+                        <img src="images/bakeries.jpg" alt="Bakeries">
+                    </div>
+                    <div class="label">Bakeries</div>
                 </div>
-                <div class="label">Bakeries</div>
-            </div>
             </a>
             <a href="ice-cream.html">
-            <div class="drawing">
-                <div class="circle">
-                    <img src="images/ice-cream.jpg" alt="Ice cream">
+                <div class="drawing">
+                    <div class="circle">
+                        <img src="images/ice-cream.jpg" alt="Ice cream">
+                    </div>
+                    <div class="label">Ice cream parlors</div>
                 </div>
-                <div class="label">Ice cream parlors</div>
-            </div>
+            </a>
+            <a href="kfc.html">
+                <div class="drawing">
+                    <div class="circle">
+                        <img src="images/kfc.jpg" alt="Bakeries">
+                    </div>
+                    <div class="label">KFC</div>
+                </div>
+            </a>
+            <a href="dominos.html">
+                <div class="drawing">
+                    <div class="circle">
+                        <img src="images/dominos.jpg" alt="Bakeries">
+                    </div>
+                    <div class="label">Dominos Kahawa</div>
+                </div>
+            </a>
+            <a href="chickeninn.html">
+                <div class="drawing">
+                    <div class="circle">
+                        <img src="images/chickeninn.jpg" alt="Bakeries">
+                    </div>
+                    <div class="label">Chicken inn Kahawa</div>
+                </div>
             </a>
         </div>
     </div>
-    
     
     <div class="second-container">
         <div class="section-heading">
@@ -1386,8 +1318,8 @@ body.modal-open {
             </div>
         </div>
     </div>
+
     <div class="additional-sections">
-        <!-- Features Section -->
         <section class="features-section">
             <h2>Why Choose Us</h2>
             <div class="features-grid">
@@ -1399,7 +1331,7 @@ body.modal-open {
                 <div class="feature-card">
                     <div class="feature-icon">❄️</div>
                     <h3>Always Fresh</h3>
-                    <p>Enjoy freshly prepared food and drinks,served at perfect temperature</p>
+                    <p>Enjoy freshly prepared food and drinks, served at perfect temperature</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💰</div>
@@ -1409,7 +1341,6 @@ body.modal-open {
             </div>
         </section>
 
-        <!-- How It Works Section -->
         <section class="how-it-works">
             <h2>How It Works</h2>
             <div class="steps-container">
@@ -1431,7 +1362,6 @@ body.modal-open {
             </div>
         </section>
 
-        <!-- Download App Section -->
         <section class="app-download">
             <div class="app-content">
                 <h2>Get Our Mobile App</h2>
@@ -1447,7 +1377,6 @@ body.modal-open {
             </div>
         </section>
 
-        <!-- Footer -->
         <footer class="site-footer">
             <div class="footer-content">
                 <div class="footer-section">
@@ -1459,7 +1388,7 @@ body.modal-open {
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="help.html">Help & Support</a></li>
-                        <li><a href="about.html">about</a></li>
+                        <li><a href="about.html">About</a></li>
                         <li><a href="categories.html">Categories</a></li>
                     </ul>
                 </div>
@@ -1485,9 +1414,9 @@ body.modal-open {
                     <div class="social-links">
                         <a href="https://instagram.com/dema_foods_kenya?igshid=OGQ5ZDc2ODk2ZA==" target="_blank" class="social-link">
                             <i class="fab fa-instagram"></i>
-                            <span class="social-text">@dema_foods_ke</span>
+                            <span class="social-text">dema_foods_ke</span>
                         </a>
-                        <a href="https://www.facebook.com/your_facebook" target="_blank" class="social-link">
+                        <a href="https://www.facebook.com/https://www.facebook.com/profile.php?id=100081608466466" target="_blank" class="social-link">
                             <i class="fab fa-facebook"></i>
                             <span class="social-text">Dema Foods</span>
                         </a>
@@ -1495,10 +1424,11 @@ body.modal-open {
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Dema Foods. All rights reserved.</p>
+                <p>© 2025 Dema Foods. All rights reserved.</p>
             </div>
         </footer>
     </div>
+
     <div class="menu-overlay">
         <span class="close-menu">×</span>
         <div class="menu-content">
@@ -1515,23 +1445,7 @@ body.modal-open {
             </nav>
         </div>
     </div>
-        <div id="locationModal" class="location-modal">
-            <div class="location-modal-content">
-                <span class="close-modal">&times;</span>
-                <h2>Add a delivery address</h2>
-                <div class="location-search-container">
-                    <div class="input-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="locationSearch" placeholder="Search">
-                    </div>
-                    <ul id="locationSuggestions" class="location-suggestions">
-                        <!-- Suggestions will be dynamically populated -->
-                    </ul>
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
+
     <script>
         let gifIndex = 1;
         setInterval(() => {
@@ -1548,210 +1462,86 @@ body.modal-open {
             
             gifIndex = gifIndex === 1 ? 2 : 1;
         }, 4500);
-    </script>
-    <script>
-        // Existing gif script remains here
-    
+
         const hamburgerMenu = document.querySelector('.hamburger-menu');
-const menuOverlay = document.querySelector('.menu-overlay');
-const closeMenu = document.querySelector('.close-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const closeMenu = document.querySelector('.close-menu');
+        const body = document.body;
+        const overlay = document.createElement('div');
+        overlay.className = 'overlay-backdrop';
+        document.body.appendChild(overlay);
 
-hamburgerMenu.addEventListener('click', () => {
-    menuOverlay.classList.add('active');
-});
-
-closeMenu.addEventListener('click', () => {
-    menuOverlay.classList.remove('active');
-});
-
-// Optional: Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!menuOverlay.contains(e.target) && !hamburgerMenu.contains(e.target)) {
-        menuOverlay.classList.remove('active');
-    }
-});
-const body = document.body;
-const overlay = document.createElement('div');
-overlay.className = 'overlay-backdrop';
-document.body.appendChild(overlay);
-
-hamburgerMenu.addEventListener('click', () => {
-    menuOverlay.classList.add('active');
-    overlay.classList.add('active');
-    body.classList.add('menu-open');
-});
-
-closeMenu.addEventListener('click', () => {
-    menuOverlay.classList.remove('active');
-    overlay.classList.remove('active');
-    body.classList.remove('menu-open');
-});
-
-// Update the existing document click event listener
-document.addEventListener('click', (e) => {
-    if (!menuOverlay.contains(e.target) && !hamburgerMenu.contains(e.target)) {
-        menuOverlay.classList.remove('active');
-        overlay.classList.remove('active');
-        body.classList.remove('menu-open');
-    }
-});
-    </script>
-    <script>
-        // Existing scripts...
-    
-        // Location Modal
-        const locationInput = document.querySelector('.location-container input');
-        const locationModal = document.getElementById('locationModal');
-        const closeModal = document.querySelector('.close-modal');
-    
-        // Modify existing location modal scripts
-
-        locationInput.addEventListener('click', () => {
-    locationModal.style.display = 'block';
-    document.body.classList.add('modal-open');
-    
-    // Display all suggestions by default when modal opens
-    locationSuggestionsContainer.innerHTML = '';
-    const initialSuggestions = locationSuggestions.slice(0, 5);
-    initialSuggestions.forEach(location => {
-        const li = document.createElement('li');
-        li.textContent = location;
-        li.addEventListener('click', () => {
-            window.location.href = `categories.html?location=${encodeURIComponent(location)}`;
+        hamburgerMenu.addEventListener('click', () => {
+            menuOverlay.classList.add('active');
+            overlay.classList.add('active');
+            body.classList.add('menu-open');
         });
-        locationSuggestionsContainer.appendChild(li);
-    });
-    locationSuggestionsContainer.classList.add('show');
-});
 
-closeModal.addEventListener('click', () => {
-    locationModal.style.display = 'none';
-    document.body.classList.remove('modal-open');
-});
-
-// Add to existing window click event
-window.addEventListener('click', (event) => {
-    if (event.target == locationModal) {
-        locationModal.style.display = 'none';
-        document.body.classList.remove('modal-open');
-    }
-});
-    </script>
-    <script>
-        // Predefined location suggestions
-        const locationSuggestions = [
-            'Nyayo 6',
-            'Nyayo 5',
-            'Nyayo 4',
-            'Nyayo 3',
-            'Nyayo 2',
-            'Nyayo 1',
-            'Nyandarua 1',
-            'Nyandarua 2',
-            'Nyandarua 3',
-            'Nyandarua 4',
-            'Mfumbiro 1',
-            'Mfumbiro 2',
-            'Mfumbiro 3',
-            'Mfumbiro 4',
-            'Ruwenzori',
-            'Usambara',
-            'Lukenya',
-        ];
-    
-        // DOM Elements
-        const locationSearchInput = document.getElementById('locationSearch');
-        const locationSuggestionsContainer = document.getElementById('locationSuggestions');
-    
-        // Function to filter and display suggestions
-        function displaySuggestions(searchTerm) {
-            // Clear previous suggestions
-            locationSuggestionsContainer.innerHTML = '';
-    
-            // Filter suggestions based on input
-            const filteredSuggestions = locationSuggestions.filter(location => 
-                location.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-    
-            // Display filtered suggestions
-            filteredSuggestions.forEach(location => {
-                const li = document.createElement('li');
-                li.textContent = location;
-                li.addEventListener('click', () => {
-                    window.location.href = `categories.html?location=${encodeURIComponent(location)}`;
-                });
-                locationSuggestionsContainer.appendChild(li);
-            });
-    
-            // Show/hide suggestions container
-            if (filteredSuggestions.length > 0) {
-                locationSuggestionsContainer.classList.add('show');
-            } else {
-                locationSuggestionsContainer.classList.remove('show');
-            }
-        }
-    
-        // Event listener for search input
-        locationSearchInput.addEventListener('input', (e) => {
-            displaySuggestions(e.target.value);
+        closeMenu.addEventListener('click', () => {
+            menuOverlay.classList.remove('active');
+            overlay.classList.remove('active');
+            body.classList.remove('menu-open');
         });
-    
-        // Close suggestions when clicking outside
+
         document.addEventListener('click', (e) => {
-            if (!locationSearchInput.contains(e.target) && 
-                !locationSuggestionsContainer.contains(e.target)) {
-                locationSuggestionsContainer.classList.remove('show');
+            if (!menuOverlay.contains(e.target) && !hamburgerMenu.contains(e.target)) {
+                menuOverlay.classList.remove('active');
+                overlay.classList.remove('active');
+                body.classList.remove('menu-open');
             }
         });
-        // Function to apply highlights to specific text elements
-function applyHighlights() {
-    // Get all highlight elements
-    const highlightElements = document.querySelectorAll('.highlight');
-    
-    highlightElements.forEach(element => {
-        // Get the computed height of the text element
-        const elementHeight = element.offsetHeight;
-        
-        // Create highlight div
-        const highlightDiv = document.createElement('div');
-        highlightDiv.style.position = 'absolute';
-        highlightDiv.style.left = '0';
-        highlightDiv.style.bottom = '4px'; // Matches your CSS bottom value
-        highlightDiv.style.width = '100%';
-        highlightDiv.style.height = `${elementHeight * 0.25}px`; // 25% of text height
-        highlightDiv.style.backgroundColor = '#FFD700';
-        highlightDiv.style.opacity = '0.4';
-        highlightDiv.style.zIndex = '-1';
-        
-        // Ensure parent element has position relative if not already set
-        if (window.getComputedStyle(element).position === 'static') {
-            element.style.position = 'relative';
+
+        const searchInput = document.getElementById('searchInput');
+        const searchSuggestions = document.getElementById('searchSuggestions');
+        const searchContainer = document.querySelector('.search-container');
+
+        const searchTerms = [
+            'Top Restaurants', 'Drinks', 'Group Dishes', 'Bakeries', 'Ice cream parlors',
+            'Dema super supper', 'Delivery Team', 'Your restaurant', 'Fast Delivery',
+            'Always Fresh', 'Best Prices', 'Order', 'Categories', 'Help & Support', 'About'
+        ];
+
+        function displaySuggestions(term) {
+            searchSuggestions.innerHTML = '';
+            const filteredTerms = searchTerms.filter(t => 
+                t.toLowerCase().includes(term.toLowerCase())
+            ).slice(0, 5);
+
+            filteredTerms.forEach(term => {
+                const li = document.createElement('li');
+                li.textContent = term;
+                li.addEventListener('click', () => {
+                    window.location.href = `search.html?q=${encodeURIComponent(term)}`;
+                });
+                searchSuggestions.appendChild(li);
+            });
+
+            searchSuggestions.classList.toggle('show', filteredTerms.length > 0);
         }
-        
-        // Add the highlight div
-        element.appendChild(highlightDiv);
-    });
-    
-    // Update highlights on window resize
-    window.addEventListener('resize', () => {
-        // Remove existing highlight divs
-        document.querySelectorAll('.highlight div').forEach(div => div.remove());
-        // Reapply highlights
-        applyHighlights();
-    });
-}
 
-// Apply highlights when DOM is loaded
-document.addEventListener('DOMContentLoaded', applyHighlights);
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.trim();
+            if (term) {
+                displaySuggestions(term);
+            } else {
+                searchSuggestions.classList.remove('show');
+            }
+        });
 
-// If you need to reapply highlights after dynamic content changes
-function refreshHighlights() {
-    // Remove existing highlight divs
-    document.querySelectorAll('.highlight div').forEach(div => div.remove());
-    // Reapply highlights
-    applyHighlights();
-}
-</script>
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const term = searchInput.value.trim();
+                if (term) {
+                    window.location.href = `search.html?q=${encodeURIComponent(term)}`;
+                }
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!searchContainer.contains(e.target)) {
+                searchSuggestions.classList.remove('show');
+            }
+        });
+    </script>
 </body>
 </html>
-        
