@@ -14,6 +14,7 @@
             scroll-behavior: smooth; 
         }
         body.no-scroll { overflow: hidden; }
+    
 
         .navigation-bar {
             max-width: 1200px; margin: 0 auto 20px; padding: 0 20px;
@@ -129,7 +130,6 @@
         }
         .button-container { text-align: center; margin: 20px 0; }
 
-        /* Custom Notification Styles */
         .notification-overlay { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0, 0, 0, 0.6); display: none; justify-content: center; 
@@ -154,10 +154,8 @@
         .notification-content button:hover { background: #8a4ca6; }
         .notification-error h3 { color: #ff4444; }
 
-        /* Error Input Style */
         .error-input { border: 2px solid #ff4444; }
 
-        /* Custom Dropdown for Schedule Delivery */
         .custom-dropdown {
             position: relative;
             width: 100%;
@@ -176,7 +174,7 @@
             align-items: center;
         }
         .dropdown-selected:after {
-            content: '\f078'; /* FontAwesome chevron-down */
+            content: '\f078';
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
         }
@@ -206,7 +204,6 @@
             background: #f0f0f0;
         }
 
-        /* Cart-specific Styles */
         .cart-item-price { font-size: 14px; color: #666; }
         .cart-location-notice { 
             font-size: 12px; 
@@ -254,19 +251,18 @@
     </div>
 
     <script>
-        const restaurants = [
+       
+const restaurants = [
             { id: 1, name: "Midcity", rating: 4.5, image: "/images/midcity.jpg" },
-            { id: 2, name: "DHL Junior", rating: 4.4, image: "/api/placeholder/400/320" },
+            { id: 2, name: "DHL Lakers", rating: 4.4, image: "/api/placeholder/400/320" },
             { id: 3, name: "Lakers Junior", rating: 4.4, image: "/api/placeholder/400/320" },
             { id: 4, name: "Winners", rating: 4.4, image: "/api/placeholder/400/320" },
             { id: 5, name: "Hashtag", rating: 4.2, image: "/api/placeholder/400/320" },
             { id: 6, name: "Masaai Kitchen", rating: 4.2, image: "/api/placeholder/400/320" },
             { id: 7, name: "Blessed", rating: 4.1, image: "/api/placeholder/400/320" },
             { id: 8, name: "Hot Grill", rating: 4.1, image: "/api/placeholder/400/320" },
-            { id: 9, name: "Faith Hotel", rating: 4.4, image: "/api/placeholder/400/320" },
-            { id: 10, name: "Urban Bites", rating: 4.7, image: "/api/placeholder/400/320" },
-            { id: 11, name: "Spice Garden", rating: 4.4, image: "/api/placeholder/400/320" },
-            { id: 12, name: "Fresh & Fast", rating: 4.5, image: "/api/placeholder/400/320" }
+            { id: 9, name: "Faith Hotel", rating: 4.0, image: "/api/placeholder/400/320" }
+           
         ];
 
         const dishes = {
@@ -325,7 +321,7 @@
                     { id: 43, name: "Githeri Veges", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
                     { id: 44, name: "Githeri Chapo(2)", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
                     { id: 45, name: "Githeri Rice", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
-                    { id: 46, name: "Pilau Viazi", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 46, name: "Githeri Viazi", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
                     { id: 47, name: "Githeri Matumbo", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
                     { id: 48, name: "Githeri Beef", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
                 ],
@@ -352,61 +348,458 @@
                 ]
             },
             lakersjunior: {
-                "Breakfast": [
-                    { id: 66, name: "Waffles", price: 420, itemDeliveryFee: 20, image: "/api/placeholder/400/320" },
-                    { id: 67, name: "Bacon & Eggs", price: 450, itemDeliveryFee: 20, image: "/api/placeholder/400/320" }
+               "Chapati Dishes": [
+                    { id: 66, name: "Chapati", price: 10, itemDeliveryFee: 3, image: "/api/placeholder/400/320" },
+                    { id: 67, name: "Chapati(1) Beans", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 68, name: "Chapati(1) Ndengu", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 69, name: "Chapati(1) Mix", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 70, name: "Chapati(1) Minji", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 71, name: "Chapati(1) Yellow beans", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 72, name: "Chapati(2) Kamande", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 73, name: "Chapati(2) Viazi", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                
+                
+                
+                
+                    
+                ],
+                "Rice Dishes": [
+                    { id: 74, name: "Rice Plain", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 75, name: "Rice Chapati(2)", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 76, name: "Rice Beans", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 77, name: "Rice Ndengu", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 78, name: "Rice Mix", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 79, name: "Rice Kamande", price: 90, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 80, name: "Rice Minji", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 81, name: "Rice Matumbo", price: 110, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 82, name: "Rice Beef", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 83, name: "Rice Kuku", price: 140, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+                "Pilau Dishes": [
+                    { id: 84, name: "Pilau plain", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 85, name: "Pilau Kamande", price: 110, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 86, name: "Pilau Matumbo", price: 120, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 87, name: "Pilau Beef", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 88, name: "Pilau Kuku", price: 160, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+                "Ugali Dishes": [
+                    { id: 89, name: "Ugali plain", price: 30, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 90, name: "Ugali Kienyeji", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 91, name: "Ugali Cabbage", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 92, name: "Ugali Sukuma", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 93, name: "Ugali Mix", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 94, name: "Ugali Fried Eggs", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 95, name: "Ugali Omena", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 96, name: "Ugali Matumbo", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 97, name: "Ugali Beef", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 98, name: "Ugali Kuku", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 99, name: "Ugali Minji", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+               
+                "Mukimo Dishes": [
+                    { id: 100, name: "Mukimo plain", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 101, name: "Mukimo Matumbo", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 102, name: "Mukimo Beef", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+                "Additional Dishes": [
+                    { id: 103, name: "Ndazi", price: 5, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 104, name: "Doughnut", price: 10, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 105, name: "Boiled Egg", price: 25, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 106, name: "Fried Egg", price: 35, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 107, name: "Beans Plain", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 108, name: "Ndengu Plain", price: 30, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 109, name: "Mix Plain", price: 30, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 110, name: "Kebab", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 111, name: "Beef Plain", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 112, name: "Minji Plain", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 113, name: "Yellow Beans", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 114, name: "Kamande Plain", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 115, name: "Githeri", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 116, name: "Matumbo Plain", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 117, name: "Veges", price: 30, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 118, name: "Sukuma", price: 30, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 119, name: "Cabbage", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 120, name: "Omena Plain", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 121, name: "Matoke Plain", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 122, name: "Matoke Matumbo", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 123, name: "Matoke Beef", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 124, name: "Kuku", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 125, name: "Biryani Kuku", price: 170, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 126, name: "Biryani Beef", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 127, name: "Samosa Ndengu", price: 15, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 128, name: "Samosa Nyama", price: 25, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 129, name: "Samosa Viazi", price: 15, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 130, name: "Mitai", price: 20, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 131, name: "Smokie Kachumbari", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 132, name: "Chips", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 133, name: "Viazi Karai", price: 20, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 134, name: "Bhajia", price: 20, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 135, name: "Smocha", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 136, name: "Chips Kuku", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 137, name: "Smokie", price: 35, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
                 ]
             },
             dhllakers: {
-                "Breakfast": [
-                    { id: 68, name: "Croissant", price: 380, itemDeliveryFee: 20, image: "/api/placeholder/400/320" }
+                "Chapati Dishes": [
+                    { id: 138, name: "Chapati", price: 10, itemDeliveryFee: 3, image: "/api/placeholder/400/320" },
+                    { id: 139, name: "Chapati(1) Beans", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 140, name: "Chapati(1) Ndengu", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 141, name: "Chapati(1) Mix", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 142, name: "Chapati(1) Minji", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 143, name: "Chapati(2) Kamande", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+    
+                    
+                ],
+                "Rice Dishes": [
+                    { id: 144, name: "Rice Plain", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 145, name: "Rice Chapati(2)", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 146, name: "Rice Beans", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 147, name: "Rice viazi", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 148, name: "Rice Kamande", price: 90, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 149, name: "Rice Minji", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 150, name: "Rice Matumbo", price: 110, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 151, name: "Rice Beef", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 152, name: "Rice Kuku", price: 140, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+                "Pilau Dishes": [
+                    { id: 153, name: "Pilau plain", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 154, name: "Pilau Kamande", price: 110, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 155, name: "Pilau Matumbo", price: 120, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 156, name: "Pilau Beef", price: 140, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 157, name: "Pilau Kuku", price: 160, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+                "Ugali Dishes": [
+                    { id: 158, name: "Ugali plain", price: 30, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 159, name: "Ugali Kienyeji", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 160, name: "Ugali Sramble", price: 90, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 161, name: "Ugali Mix", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 162, name: "Ugali Fried Eggs", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 163, name: "Ugali Omena", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 164, name: "Ugali Matumbo", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 165, name: "Ugali Beef", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 166, name: "Ugali Kuku", price: 140, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 167, name: "Ugali Minji", price: 90, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 168, name: "Ugali Samaki", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 169, name: "Ugali Pambana", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+               
+                "Mukimo Dishes": [
+                    { id: 170, name: "Mukimo plain", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 171, name: "Mukimo Matumbo", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 172, name: "Mukimo Beef", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+                "Indomie Dishes": [
+                    { id: 173, name: "Githeri Rasta", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 174, name: "Indomie Beef Stew", price: 110, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 175, name: "Indomie Minji", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 176, name: "Indomie Beans", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 177, name: "Indomie Pilau", price: 90, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 178, name: "Indomie Rice", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 179, name: "Indomie Kuku Special", price: 120, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 180, name: "Indomie Kachumbari", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 181, name: "Indomie Jumbo Fried Eggs", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 182, name: "Indomie Junior Fried Eggs", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                ],
+                "Additional Dishes": [
+                    { id: 183, name: "Ndazi", price: 5, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 184, name: "Doughnut", price: 10, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 185, name: "Boiled Egg", price: 25, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 186, name: "Fried Egg", price: 35, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 187, name: "Beans Plain", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 188, name: "Ndengu Plain", price: 30, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 189, name: "Mix Plain", price: 30, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 190, name: "Beef Plain", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 191, name: "Minji Plain", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 192, name: "Kamande Plain", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 193, name: "Githeri", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 194, name: "Matumbo Plain", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 195, name: "Veges", price: 30, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 196, name: "Sukuma", price: 30, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 197, name: "Cabbage", price: 30, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 198, name: "Matoke Plain", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 199, name: "Matoke Matumbo", price: 120, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 200, name: "Matoke Beef", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 201, name: "Kuku", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 202, name: "Samosa", price: 25, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 203, name: "Smokie", price: 35, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
                 ]
             },
             hashtag: {
-                "Appetizers": [
-                    { id: 69, name: "Spring Rolls", price: 400, itemDeliveryFee: 20, image: "/api/placeholder/400/320" }
+                "Chapati Dishes": [
+                    { id: 204, name: "Chapati", price: 10, itemDeliveryFee: 3, image: "/api/placeholder/400/320" },
+                    { id: 205, name: "Chapati(2) Beans", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 206, name: "Chapati(2) Ndengu", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 207, name: "Chapati(2) Minji", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 208, name: "Chapati(2) Matumbo", price: 90, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 209, name: "Chapati(2) Veges", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 210, name: "Chapati(2) Managu", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 211, name: "Chapati(2) Beef", price: 120, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 212, name: "Chapati(2) Kuku", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 213, name: "Chapati(2) Scramble", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+    
+                ],
+                "Rice Dishes": [
+                    { id: 214, name: "Rice Plain", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 215, name: "Rice Beans", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 216, name: "Rice Ndengu", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 217, name: "Rice Managu", price: 30, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 218, name: "Rice Veges", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 219, name: "Rice Matoke", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 220, name: "Rice Scrambled Egg", price: 90, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 221, name: "Rice Minji", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 222, name: "Rice Matumbo", price: 90, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 223, name: "Rice Beef", price: 120, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 224, name: "Rice Kuku", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 225, name: "Rice Viazi", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+                "Pilau Dishes": [
+                    { id: 226, name: "Pilau plain", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 227, name: "Pilau Veges", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 228, name: "Pilau Matumbo", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 228, name: "Pilau Beef", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 230, name: "Pilau Kuku", price: 180, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+                "Ugali Dishes": [
+                    { id: 231, name: "Ugali plain", price: 30, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 232, name: "Ugali Minji", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 233, name: "Ugali Veges", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 234, name: "Ugali Managu", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 235, name: "Ugali Mix", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 236, name: "Ugali Scramble", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 237, name: "Ugali Omena", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 238, name: "Ugali Matumbo", price: 90, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 239, name: "Ugali Beef", price: 120, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 240, name: "Ugali Kuku", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 241, name: "Ugali Ndengu", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+                "Githeri Dishes": [
+                    { id: 242, name: "Githeri plain", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }, 
+                    { id: 243, name: "Githeri Rice", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 244, name: "Githeri Matumbo", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 245, name: "Githeri Beef", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+                "Matoke Dishes": [
+                    { id: 246, name: "Matoke Plain", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 247, name: "Matoke Matumbo", price: 110, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 248, name: "Matoke Beef", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 249, name: "Matoke Kuku", price: 160, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+            ],
+                "Additional Dishes": [
+                    { id: 250, name: "Ndazi", price: 10, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 251, name: "Omelette", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 252, name: "Fried Eggs", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 253, name: "Beans Plain", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 254, name: "Ndengu Plain", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 255, name: "Kuku Plain", price: 120, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 256, name: "Matumbo Plain", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 257, name: "Beef Plain", price: 90, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 258, name: "Minji Plain", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
                 ]
             },
             blessed: {
-                "Main Course": [
-                    { id: 70, name: "Fish Fillet", price: 500, itemDeliveryFee: 20, image: "/api/placeholder/400/320" }
+                "Chapati Dishes": [
+                    { id: 259, name: "Chapati", price: 10, itemDeliveryFee: 3, image: "/api/placeholder/400/320" },
+                    { id: 260, name: "Chapati(2) Beans", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 261, name: "Chapati(2) Ndengu", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 262, name: "Minji Waru Chapati(2)", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+                "Rice Dishes": [
+                   
+                    { id: 263, name: "Rice Beans", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 264, name: "Rice Ndengu", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                
+                ],
+                "Pilau Dishes": [
+                    { id: 265, name: "Pilau plain", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },      
+                    { id: 266, name: "Pilau Beef", price: 140, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+                "Ugali Dishes": [
+                    { id: 267, name: "Ugali Mix", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 268, name: "Ugali Nyama Fry", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 269, name: "Ugali Matumbo Supu", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 270, name: "Ugali Matumbo Fry Harara", price: 120, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 271, name: "Ugali Kuku Fry", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 272, name: "Ugali Omena Fry HawHaw", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 273, name: "Ugali Omena Supu", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 274, name: "Ugali Wiu/Fulu", price: 90, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 275, name: "Ugali Mlima/Pambana", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 276, name: "Ugali Macho", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 277, name: "Ugali Mbuta", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 278, name: "Ugali Maini Kuku & Gizzards", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 279, name: "Ugali Maini Ng'ombe", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 280, name: "Ugali Pork", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 281, name: "Ugali Mlima Pork", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 282, name: "Ugali Tilapia", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 283, name: "Ugali Balls", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 284, name: "Ugali Mboga Kienyeji", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                    
+                ],
+                "Githeri Dishes": [
+                    { id: 285, name: "Githeri ", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                    
+                ],
+
+                "Additional Dishes": [
+                    { id: 286, name: "Andazi", price: 10, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 287, name: "Viazi Karai", price: 10, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 288, name: "Boiled Egg", price: 25, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 289, name: "Ndizi Karai", price: 10, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 290, name: "Omena supu Alenya", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 291, name: "Akuoga Alenya", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 292, name: "Mboga Kienyeji", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 293, name: "Akuoga", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 294, name: "Managu", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 295, name: "Samaki", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 296, name: "Gizzard ya Kuku", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 297, name: "Maini ya Kuku", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 298, name: "Maini", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 299, name: "Pork Bone", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 300, name: "Pork Mlima", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 301, name: "Matumbo Fry Harara", price: 120, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 302, name: "Pork Fry", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 303, name: "Nyama Fry", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 304, name: "Maini Fry Ng'ombe", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
                 ]
             },
             masaaikitchen: {
-                "Sides": [
-                    { id: 71, name: "Mashed Potatoes", price: 350, itemDeliveryFee: 20, image: "/api/placeholder/400/320" }
+                "Chapati Dishes": [
+                    { id: 305, name: "Chapati", price: 15, itemDeliveryFee: 3, image: "/api/placeholder/400/320" },
+                    { id: 306, name: "Chapati(2) Beans", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 307, name: "Chapati(2) Ndengu", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 308, name: "Chapati(2) Minji", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 309, name: "Chapati(2) Matumbo", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 310, name: "Chapati(2) Beef", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    {id: 311, name: "Chapati(2) Cabbage", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+    
+                    
+                ],
+                "Rice Dishes": [
+                    { id: 312, name: "Rice Plain", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 313, name: "Rice Beans", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 314, name: "Rice Ndengu", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 315, name: "Rice Matumbo", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 316, name: "Rice Beef", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+                "Pilau Dishes": [
+                    { id: 317, name: "Pilau plain", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 318, name: "Pilau Nyama", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                ],
+                "Ugali Dishes": [
+                    { id: 319, name: "Ugali plain", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 320, name: "Ugali Mayai", price: 120, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 321, name: "Ugali Matumbo", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 322, name: "Ugali Beef", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 323, name: "Ugali Veges", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 324, name: "Ugali Omena", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+               
+
+                "Indomie Dishes": [
+                    { id: 325, name: "Indomie Githeri Rasta", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 326, name: "Indomie Beef", price: 110, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 327, name: "Indomie Minji", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 328, name: "Indomie Plain Jumbo", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 329, name: "Indomie Plain Junior", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 330, name: "Indomie Wrap", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 331, name: "Indomie Ndengu", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 332, name: "Indomie Beans", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 333, name: "Indomie Eggs", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                ],
+
+                "Additional Dishes": [
+                    { id: 334, name: "Nyama Plain", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 335, name: "Matumbo Plain", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 336, name: "Fried Egg(2)", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 337, name: "Beans Plain", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 338, name: "Ndengu Plain", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                   
                 ]
             },
             hotgrill: {
-                "Main Course": [
-                    { id: 72, name: "Lamb Chops", price: 550, itemDeliveryFee: 20, image: "/api/placeholder/400/320" }
-                ]
+                "Chapati Dishes": [
+                    { id: 339, name: "Chapati", price: 10, itemDeliveryFee: 3, image: "/api/placeholder/400/320" },
+                    { id: 340, name: "Chapati", price: 20, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    
+                ],
+                "Rice Dishes": [
+                    { id: 341, name: "Rice Plain", price: 30, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 342, name: "Rice Beans", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 343, name: "Rice Ndengu", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 344, name: "Rice Matumbo", price: 100, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 345, name: "Rice Beef", price: 120, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+                "Pilau Dishes": [
+                    { id: 346, name: "Pilau plain", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 347, name: "Pilau Fried Matumbo", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 348, name: "Pilau Matumbo", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 349, name: "Pilau Beef", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                ],
+                "Ugali Dishes": [
+                    { id: 350, name: "Ugali plain", price: 30, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 351, name: "Ugali Greens", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 352, name: "Ugali Stewed Ugali", price: 120, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 353, name: "Ugali Fried Beef", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 354, name: "Ugali Fried Egg(2)", price: 90, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 355, name: "Ugali Scrambled Egg(2)", price: 90, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                   
+                ],
+               
+              
+                "Additional Dishes": [
+                    { id: 356, name: "Andazi", price: 10, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 357, name: "Samosa Ndengu", price: 10, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 358, name: "Fried Egg(2)", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 359, name: "Yellow Beans", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 360, name: "Ndengu Plain", price: 30, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 361, name: "Green", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 362, name: "Omena", price: 40, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 363, name: "Beef Plain", price: 90, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 364, name: "Matumbo Plain", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+            ]
             },
             faithhotel: {
-                "Desserts": [
-                    { id: 73, name: "Chocolate Cake", price: 400, itemDeliveryFee: 20, image: "/api/placeholder/400/320" }
-                ]
+                "Chapati Dishes": [
+                
+                    { id: 365, name: "Chapati", price: 20, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 366, name: "Chapati(2) Beans", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 367, name: "Chapati(2) Ndengu", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    
+                ],
+                "Rice Dishes": [
+                
+                    { id: 368, name: "Rice Beans", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 369, name: "Rice Ndengu", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 370, name: "Rice Nyama", price: 130, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+
+                    
+                ],
+                
+                "Ugali Dishes": [
+                    { id: 371, name: "Ugali Nyama", price: 120, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 372, name: "Ugali Kuku", price: 150, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 373, name: "Ugali Matumbo", price: 120, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 374, name: "Ugali Mboga", price: 60, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 375, name: "Ugali Mayai(2) Fried", price: 80, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 376, name: "Ugali Omena Fried", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" }
+                   
+                ],
+               
+              
+                "Additional Dishes": [
+                    { id: 377, name: "Matoke", price: 50, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 378, name: "Chips Plain", price: 70, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    { id: 379, name: "Chips Kuku", price: 170, itemDeliveryFee: 5, image: "/api/placeholder/400/320" },
+                    
+            ]
+            
             },
-            royalkitchen: {
+            Winners: {
                 "Beverages": [
                     { id: 74, name: "Coffee", price: 350, itemDeliveryFee: 20, image: "/api/placeholder/400/320" }
                 ]
             },
-            urbanbites: {
-                "Specials": [
-                    { id: 75, name: "Chef's Salad", price: 450, itemDeliveryFee: 20, image: "/api/placeholder/400/320" }
-                ]
-            },
-            spicegarden: {
-                "Main Course": [
-                    { id: 76, name: "Pasta Alfredo", price: 420, itemDeliveryFee: 20, image: "/api/placeholder/400/320" }
-                ]
-            },
-            freshfast: {
-                "Sides": [
-                    { id: 77, name: "Fries", price: 380, itemDeliveryFee: 20, image: "/api/placeholder/400/320" }
-                ]
-            }
+          
+            
         };
 
         const locations = [
@@ -424,6 +817,20 @@
         let userProfile = JSON.parse(localStorage.getItem('userProfile')) || { phone: "" };
         let expandedCategory = null;
         let currentRestaurantId = null;
+        let currentDishId = null;
+        let currentCategory = null;
+        let currentView = 'restaurantGrid'; // Track current view for navigation
+// Define the page hierarchy order (from deepest to shallowest)
+const pageHierarchy = [
+    'orderConfirmation',
+    'cart',
+    'dishDetail',
+    'restaurantMenu',
+    'restaurantGrid'
+];
+
+// Track navigation stack
+let navigationStack = [currentView]; // Initialize with the starting view
 
         function calculateTotal(basePrice, itemDeliveryFee, locationDeliveryFee, quantity) {
             const basePlusItem = basePrice + itemDeliveryFee;
@@ -435,6 +842,36 @@
             if (badge) badge.textContent = cart.length;
         }
 
+        // Navigation state management
+        function pushState(view, data = {}) {
+            currentView = view;
+            history.pushState({ view, ...data }, '', `#${view}`);
+        }
+        window.addEventListener('popstate', (event) => {
+    const state = event.state || { view: 'restaurantGrid' };
+    const view = state.view;
+
+    // Sync navigation stack
+    if (navigationStack[navigationStack.length - 1] !== view) {
+        navigationStack.push(view); // Forward navigation
+    } else {
+        navigationStack.pop(); // Back navigation
+    }
+    currentView = view;
+
+    // Render the view with state data
+    if (view === 'restaurantGrid') {
+        showRestaurantGrid();
+    } else if (view === 'restaurantMenu') {
+        showRestaurantMenu(state.id);
+    } else if (view === 'dishDetail') {
+        showDishDetail(state.id, state.restaurantId, state.category);
+    } else if (view === 'cart') {
+        showCart();
+    } else if (view === 'orderConfirmation') {
+        showOrderConfirmation(state.order);
+    }
+});
         function showRestaurantGrid() {
             const mainContent = document.getElementById('mainContent');
             mainContent.innerHTML = `
@@ -452,11 +889,11 @@
                             <i class="fas fa-search search-icon"></i>
                         </div>
                     </div>
-                    <button class="cart-btn" onclick="showCart()" aria-label="View cart"><i class="fas fa-shopping-cart"></i><span class="cart-badge">${cart.length}</span></button>
+                    <button class="cart-btn" onclick="navigateTo('cart')" aria-label="View cart"><i class="fas fa-shopping-cart"></i><span class="cart-badge">${cart.length}</span></button>
                 </div>
                 <div class="restaurant-grid">
                     ${restaurants.map(restaurant => `
-                        <div class="restaurant-item" tabindex="0" onclick="showRestaurantMenu(${restaurant.id})" onkeydown="if(event.key === 'Enter') showRestaurantMenu(${restaurant.id})">
+                        <div class="restaurant-item" tabindex="0" onclick="navigateTo('restaurantMenu', { id: ${restaurant.id} })" onkeydown="if(event.key === 'Enter') navigateTo('restaurantMenu', { id: ${restaurant.id} })">
                             <div class="restaurant-image-container">
                                 <img src="${restaurant.image}" alt="${restaurant.name}" class="restaurant-image" loading="lazy">
                             </div>
@@ -471,44 +908,28 @@
                     `).join('')}
                 </div>
             `;
+            pushState('restaurantGrid');
         }
 
         function showRestaurantMenu(restaurantId) {
             currentRestaurantId = restaurantId;
             const restaurant = restaurants.find(r => r.id === restaurantId);
-            if (!restaurant) {
-                console.error('Restaurant not found for ID:', restaurantId);
-                return;
-            }
+            if (!restaurant) return;
             const restaurantKey = restaurant.name.toLowerCase().replace(/\s+/g, '');
             const mainContent = document.getElementById('mainContent');
             const locationText = selectedHall ? `Current Location: ${selectedHall}` : "Add Your Address";
 
-            if (!dishes[restaurantKey]) {
-                mainContent.innerHTML = `
-                    <div class="menu-view">
-                        <div class="navigation-bar">
-                            <button class="back-btn" onclick="showRestaurantGrid()" aria-label="Back to restaurants"><i class="fas fa-arrow-left"></i></button>
-                            <div class="search-wrapper"></div>
-                            <button class="cart-btn" onclick="showCart()" aria-label="View cart"><i class="fas fa-shopping-cart"></i><span class="cart-badge">${cart.length}</span></button>
-                        </div>
-                        <h2>No menu available for ${restaurant.name}</h2>
-                    </div>
-                `;
-                return;
-            }
-
             mainContent.innerHTML = `
                 <div class="menu-view">
                     <div class="navigation-bar">
-                        <button class="back-btn" onclick="showRestaurantGrid()" aria-label="Back to restaurants"><i class="fas fa-arrow-left"></i></button>
+                        <button class="back-btn" onclick="navigateBack()" aria-label="Back to restaurants"><i class="fas fa-arrow-left"></i></button>
                         <div class="search-wrapper">
                             <div class="search-container">
                                 <input type="text" class="search-input" placeholder="Search menu items..." onkeyup="searchMenuItems(this.value, '${restaurantKey}')">
                                 <i class="fas fa-search search-icon"></i>
                             </div>
                         </div>
-                        <button class="cart-btn" onclick="showCart()" aria-label="View cart"><i class="fas fa-shopping-cart"></i><span class="cart-badge">${cart.length}</span></button>
+                        <button class="cart-btn" onclick="navigateTo('cart')" aria-label="View cart"><i class="fas fa-shopping-cart"></i><span class="cart-badge">${cart.length}</span></button>
                     </div>
                     <div class="restaurant-banner">
                         <img src="${restaurant.image}" alt="${restaurant.name}" class="banner-image" loading="lazy">
@@ -542,6 +963,7 @@
                     </div>
                 </div>
             `;
+            pushState('restaurantMenu', { id: restaurantId });
         }
 
         function openLocationModal(restaurantId, context) {
@@ -563,8 +985,7 @@
             `;
             modal.style.display = 'flex';
             document.body.classList.add('no-scroll');
-            const searchInput = document.getElementById('locationSearch');
-            searchInput.focus();
+            // Do not focus the search input automatically
         }
 
         function closeLocationModal() {
@@ -606,16 +1027,16 @@
                 <div class="category-section">
                     <div class="category-header">
                         <h3 class="category-title">${category}</h3>
-                        <button class="see-more-btn" id="toggle-${category.toLowerCase().replace(/\s+/g, '-')}" aria-label="${expandedCategory === category ? 'Collapse' : 'Expand'} ${category} items" onclick="toggleCategory('${restaurantKey}', '${category}', ${deliveryFee})">
+                        <button class="see-more-btn" onclick="toggleCategory('${restaurantKey}', '${category}', ${deliveryFee})">
                             ${expandedCategory === category ? 'See Less' : 'See More'}
                         </button>
                     </div>
-                    <div id="${category.toLowerCase().replace(/\s+/g, '-')}-grid" class="${expandedCategory === category ? 'dishes-expanded' : 'dishes-grid'}">
+                    <div class="${expandedCategory === category ? 'dishes-expanded' : 'dishes-grid'}">
                         ${dishes[restaurantKey][category].map(dish => `
-                            <div class="dish-wrapper" tabindex="0" onclick="showDishDetail(${dish.id}, ${restaurants.find(r => r.name.toLowerCase().replace(/\s+/g, '') === restaurantKey).id}, '${category}')">
+                            <div class="dish-wrapper" tabindex="0" onclick="navigateTo('dishDetail', { id: ${dish.id}, restaurantId: ${restaurants.find(r => r.name.toLowerCase().replace(/\s+/g, '') === restaurantKey).id}, category: '${category}' })">
                                 <div class="dish-item">
                                     <img src="${dish.image}" alt="${dish.name}" class="dish-image" loading="lazy">
-                                    <button class="add-button" aria-label="Add ${dish.name} to cart" onclick="event.stopPropagation(); addToCart(${dish.id}, ${restaurants.find(r => r.name.toLowerCase().replace(/\s+/g, '') === restaurantKey).id}, '${category}', 1)">+</button>
+                                    <button class="add-button" onclick="event.stopPropagation(); addToCart(${dish.id}, ${restaurants.find(r => r.name.toLowerCase().replace(/\s+/g, '') === restaurantKey).id}, '${category}', 1)">+</button>
                                 </div>
                                 <div class="dish-info">
                                     <h4 class="dish-name">${dish.name}</h4>
@@ -632,7 +1053,7 @@
             const filteredRestaurants = restaurants.filter(r => r.name.toLowerCase().includes(searchTerm.toLowerCase()));
             const restaurantGrid = document.querySelector('.restaurant-grid');
             restaurantGrid.innerHTML = filteredRestaurants.map(restaurant => `
-                <div class="restaurant-item" tabindex="0" onclick="showRestaurantMenu(${restaurant.id})" onkeydown="if(event.key === 'Enter') showRestaurantMenu(${restaurant.id})">
+                <div class="restaurant-item" tabindex="0" onclick="navigateTo('restaurantMenu', { id: ${restaurant.id} })" onkeydown="if(event.key === 'Enter') navigateTo('restaurantMenu', { id: ${restaurant.id} })">
                     <div class="restaurant-image-container">
                         <img src="${restaurant.image}" alt="${restaurant.name}" class="restaurant-image" loading="lazy">
                     </div>
@@ -662,10 +1083,10 @@
                     </div>
                     <div class="${expandedCategory === category ? 'dishes-expanded' : 'dishes-grid'}">
                         ${filteredCategories[category].map(dish => `
-                            <div class="dish-wrapper" tabindex="0" onclick="showDishDetail(${dish.id}, ${restaurants.find(r => r.name.toLowerCase().replace(/\s+/g, '') === restaurantKey).id}, '${category}')">
+                            <div class="dish-wrapper" tabindex="0" onclick="navigateTo('dishDetail', { id: ${dish.id}, restaurantId: ${restaurants.find(r => r.name.toLowerCase().replace(/\s+/g, '') === restaurantKey).id}, category: '${category}' })">
                                 <div class="dish-item">
                                     <img src="${dish.image}" alt="${dish.name}" class="dish-image" loading="lazy">
-                                    <button class="add-button" aria-label="Add ${dish.name} to cart" onclick="event.stopPropagation(); addToCart(${dish.id}, ${restaurants.find(r => r.name.toLowerCase().replace(/\s+/g, '') === restaurantKey).id}, '${category}', 1)">+</button>
+                                    <button class="add-button" onclick="event.stopPropagation(); addToCart(${dish.id}, ${restaurants.find(r => r.name.toLowerCase().replace(/\s+/g, '') === restaurantKey).id}, '${category}', 1)">+</button>
                                 </div>
                                 <div class="dish-info">
                                     <h4 class="dish-name">${dish.name}</h4>
@@ -688,9 +1109,6 @@
             else if (context === 'cart') showCart();
         }
 
-        let currentDishId = null;
-        let currentCategory = null;
-
         function showDishDetail(dishId, restaurantId, category) {
             currentDishId = dishId;
             currentCategory = category;
@@ -705,14 +1123,14 @@
             mainContent.innerHTML = `
                 <div class="menu-view">
                     <div class="navigation-bar">
-                        <button class="back-btn" onclick="showRestaurantMenu(${restaurantId})" aria-label="Back to menu"><i class="fas fa-arrow-left"></i></button>
+                        <button class="back-btn" onclick="navigateBack()" aria-label="Back to menu"><i class="fas fa-arrow-left"></i></button>
                         <div class="search-wrapper">
                             <div class="search-container">
                                 <input type="text" class="search-input" placeholder="Search ${category} items..." onkeyup="searchCategorySuggestions(this.value, '${restaurantKey}', '${category}', ${dish.id}, ${restaurantId})">
                                 <i class="fas fa-search search-icon"></i>
                             </div>
                         </div>
-                        <button class="cart-btn" onclick="showCart()" aria-label="View cart"><i class="fas fa-shopping-cart"></i><span class="cart-badge">${cart.length}</span></button>
+                        <button class="cart-btn" onclick="navigateTo('cart')" aria-label="View cart"><i class="fas fa-shopping-cart"></i><span class="cart-badge">${cart.length}</span></button>
                     </div>
                     <div style="background: white; padding: 20px; border-radius: 10px;">
                         <img src="${dish.image}" alt="${dish.name}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 10px;" loading="lazy">
@@ -751,10 +1169,10 @@
                     </div>
                     <div id="categorySuggestions" class="category-suggestions">
                         ${dishes[restaurantKey][category].filter(d => d.id !== dishId).map(item => `
-                            <div class="dish-wrapper" tabindex="0" onclick="showDishDetail(${item.id}, ${restaurantId}, '${category}')">
+                            <div class="dish-wrapper" tabindex="0" onclick="navigateTo('dishDetail', { id: ${item.id}, restaurantId: ${restaurantId}, category: '${category}' })">
                                 <div class="dish-item">
                                     <img src="${item.image}" alt="${item.name}" class="dish-image" loading="lazy">
-                                    <button class="add-button" aria-label="Add ${item.name} to cart" onclick="event.stopPropagation(); addToCart(${item.id}, ${restaurantId}, '${category}', 1)">+</button>
+                                    <button class="add-button" onclick="event.stopPropagation(); addToCart(${item.id}, ${restaurantId}, '${category}', 1)">+</button>
                                 </div>
                                 <div class="dish-info">
                                     <h4 class="dish-name">${item.name}</h4>
@@ -765,6 +1183,7 @@
                     </div>
                 </div>
             `;
+            pushState('dishDetail', { id: dishId, restaurantId, category });
         }
 
         function updateQuantity(change, basePrice, itemDeliveryFee, locationDeliveryFee, dishId, restaurantId, category) {
@@ -783,10 +1202,10 @@
                 dish.id !== currentDishId && dish.name.toLowerCase().includes(searchTerm.toLowerCase()));
             const suggestionsDiv = document.getElementById('categorySuggestions');
             suggestionsDiv.innerHTML = filteredItems.map(item => `
-                <div class="dish-wrapper" tabindex="0" onclick="showDishDetail(${item.id}, ${restaurantId}, '${category}')">
+                <div class="dish-wrapper" tabindex="0" onclick="navigateTo('dishDetail', { id: ${item.id}, restaurantId: ${restaurantId}, category: '${category}' })">
                     <div class="dish-item">
                         <img src="${item.image}" alt="${item.name}" class="dish-image" loading="lazy">
-                        <button class="add-button" aria-label="Add ${item.name} to cart" onclick="event.stopPropagation(); addToCart(${item.id}, ${restaurantId}, '${category}', 1)">+</button>
+                        <button class="add-button" onclick="event.stopPropagation(); addToCart(${item.id}, ${restaurantId}, '${category}', 1)">+</button>
                     </div>
                     <div class="dish-info">
                         <h4 class="dish-name">${item.name}</h4>
@@ -810,9 +1229,7 @@
             modal.style.display = 'flex';
             document.body.classList.add('no-scroll');
 
-            if (!isError) {
-                setTimeout(closeNotification, 3000);
-            }
+            if (!isError) setTimeout(closeNotification, 3000);
         }
 
         function closeNotification() {
@@ -828,7 +1245,7 @@
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartBadge();
             showNotification('Added to Cart', `${dish.name} (x${quantity}) has been added to your cart!`);
-            showRestaurantMenu(restaurantId);
+            navigateTo('restaurantMenu', { id: restaurantId });
         }
 
         function showCart() {
@@ -840,9 +1257,9 @@
             mainContent.innerHTML = `
                 <div class="menu-view">
                     <div class="navigation-bar">
-                        <button class="back-btn" onclick="showRestaurantGrid()" aria-label="Back to restaurants"><i class="fas fa-arrow-left"></i></button>
+                        <button class="back-btn" onclick="navigateBack()" aria-label="Back to restaurants"><i class="fas fa-arrow-left"></i></button>
                         <div class="search-wrapper"></div>
-                        <button class="cart-btn" onclick="showCart()" aria-label="View cart"><i class="fas fa-shopping-cart"></i><span class="cart-badge">${cart.length}</span></button>
+                        <button class="cart-btn" onclick="navigateTo('cart')" aria-label="View cart"><i class="fas fa-shopping-cart"></i><span class="cart-badge">${cart.length}</span></button>
                     </div>
                     <h2 style="margin-bottom: 20px;">Your Cart</h2>
                     ${cart.length === 0 ? '<p>Your cart is empty.</p>' : `
@@ -897,14 +1314,13 @@
 
             const dropdownSelected = document.getElementById('dropdownSelected');
             const dropdownMenu = document.getElementById('dropdownMenu');
-            dropdownSelected.addEventListener('click', () => {
-                dropdownMenu.classList.toggle('show');
-            });
+            dropdownSelected.addEventListener('click', () => dropdownMenu.classList.toggle('show'));
             document.addEventListener('click', (e) => {
                 if (!dropdownSelected.contains(e.target) && !dropdownMenu.contains(e.target)) {
                     dropdownMenu.classList.remove('show');
                 }
             });
+            pushState('cart');
         }
 
         function selectSchedule(value) {
@@ -924,60 +1340,134 @@
         }
 
         function placeOrder() {
-            const phoneInput = document.getElementById('phone');
-            const phone = phoneInput.value;
-            const schedule = document.getElementById('schedule').value;
+    const phoneInput = document.getElementById('phone');
+    const phone = phoneInput.value;
+    const schedule = document.getElementById('schedule').value;
 
-            if (!phone || !/^\d{10}$/.test(phone)) {
-                phoneInput.classList.add('error-input');
-                showNotification('Error', 'Please enter a valid 10-digit phone number.', true);
-                return;
-            }
-            phoneInput.classList.remove('error-input');
-            userProfile.phone = phone;
-            localStorage.setItem('userProfile', JSON.stringify(userProfile));
+    if (!phone || !/^\d{10}$/.test(phone)) {
+        phoneInput.classList.add('error-input');
+        showNotification('Error', 'Please enter a valid 10-digit phone number.', true);
+        return;
+    }
+    phoneInput.classList.remove('error-input');
+    userProfile.phone = phone;
+    localStorage.setItem('userProfile', JSON.stringify(userProfile));
 
-            const order = {
-                orderId: `ORD${Date.now()}`,
-                items: cart,
-                total: cart.reduce((sum, item) => sum + calculateTotal(item.price, item.itemDeliveryFee, selectedDeliveryFee, item.quantity), 0),
-                location: selectedHall,
-                phone: phone,
-                schedule: schedule,
-                timestamp: new Date().toISOString(),
-                estTime: locations.find(z => z.halls.includes(selectedHall))?.estTime || 'Unknown time',
-                status: 'Pending'
-            };
+    const order = {
+        orderId: `ORD${Date.now()}`,
+        items: cart,
+        total: selectedDeliveryFee === 0 
+            ? cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) // Base price only when no location
+            : cart.reduce((sum, item) => sum + calculateTotal(item.price, item.itemDeliveryFee, selectedDeliveryFee, item.quantity), 0), // Full price with fees when location is set
+        location: selectedHall,
+        phone: phone,
+        schedule: schedule,
+        timestamp: new Date().toISOString(),
+        estTime: locations.find(z => z.halls.includes(selectedHall))?.estTime || 'Unknown time',
+        status: 'Pending'
+    };
 
-            console.log('Order placed:', order);
-            showOrderConfirmation(order);
-            cart = [];
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartBadge();
+    showOrderConfirmation(order);
+    cart = [];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartBadge();
+}
+function showOrderConfirmation(order) {
+    const mainContent = document.getElementById('mainContent');
+    const isLocationSet = order.location && selectedDeliveryFee !== 0; // Check if location is set
+    mainContent.innerHTML = `
+        <div class="menu-view">
+            <div class="navigation-bar">
+                <button class="back-btn" onclick="navigateBack()" aria-label="Back to restaurants"><i class="fas fa-arrow-left"></i></button>
+                <div class="search-wrapper"></div>
+            </div>
+            <h2 style="margin-bottom: 20px;">Order Confirmed!</h2>
+            <div style="background: white; padding: 20px; border-radius: 10px;">
+                <p><strong>Order ID:</strong> ${order.orderId}</p>
+                <p><strong>Items:</strong> ${order.items.map(item => `${item.name} (x${item.quantity})`).join(', ')}</p>
+                <p><strong>Total:</strong> KES ${order.total} ${isLocationSet ? '' : '(Excludes delivery fees - location not set)'}</p>
+                <p><strong>Delivery to:</strong> ${order.location || 'Not specified'}</p>
+                <p><strong>Estimated Delivery:</strong> ${order.schedule === 'now' ? order.estTime : order.schedule === '12pm' ? '12 PM' : '6 PM'}</p>
+                <p><strong>Phone:</strong> ${order.phone}</p>
+                <button style="width: 100%; padding: 15px; background: #9b59b6; color: white; border: none; border-radius: 5px; margin-top: 20px;" onclick="navigateTo('restaurantGrid')">Continue Ordering</button>
+            </div>
+        </div>
+    `;
+    pushState('orderConfirmation');
+}
+
+
+function navigateTo(view, data = {}) {
+    if (view === 'restaurantGrid') showRestaurantGrid();
+    else if (view === 'restaurantMenu') showRestaurantMenu(data.id);
+    else if (view === 'dishDetail') showDishDetail(data.id, data.restaurantId, data.category);
+    else if (view === 'cart') showCart();
+    else if (view === 'orderConfirmation') showOrderConfirmation(data.order);
+
+    if (view !== navigationStack[navigationStack.length - 1]) {
+        navigationStack.push(view);
+        history.pushState({ view, ...data }, '', `#${view}`);
+    }
+    currentView = view;
+}
+
+function navigateBack() {
+    if (navigationStack.length > 1) {
+        navigationStack.pop();
+        const previousView = navigationStack[navigationStack.length - 1];
+        currentView = previousView;
+
+        if (previousView === 'restaurantGrid') {
+            showRestaurantGrid();
+            history.pushState({ view: 'restaurantGrid' }, '', '#restaurantGrid');
+        } else if (previousView === 'restaurantMenu') {
+            showRestaurantMenu(currentRestaurantId);
+            history.pushState({ view: 'restaurantMenu', id: currentRestaurantId }, '', '#restaurantMenu');
+        } else if (previousView === 'dishDetail') {
+            showDishDetail(currentDishId, currentRestaurantId, currentCategory);
+            history.pushState({ view: 'dishDetail', id: currentDishId, restaurantId: currentRestaurantId, category: currentCategory }, '', '#dishDetail');
+        } else if (previousView === 'cart') {
+            showCart();
+            history.pushState({ view: 'cart' }, '', '#cart');
+        } else if (previousView === 'orderConfirmation') {
+            const orderData = { items: cart, total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) };
+            showOrderConfirmation(orderData);
+            history.pushState({ view: 'orderConfirmation', order: orderData }, '', '#orderConfirmation');
         }
+    } else {
+        navigationStack = ['restaurantGrid'];
+        currentView = 'restaurantGrid';
+        showRestaurantGrid();
+        history.pushState({ view: 'restaurantGrid' }, '', '#restaurantGrid');
+    }
+}
+window.addEventListener('popstate', (event) => {
+    const state = event.state || { view: 'restaurantGrid' };
+    const view = state.view;
 
-        function showOrderConfirmation(order) {
-            const mainContent = document.getElementById('mainContent');
-            mainContent.innerHTML = `
-                <div class="menu-view">
-                    <div class="navigation-bar">
-                        <button class="back-btn" onclick="showRestaurantGrid()" aria-label="Back to restaurants"><i class="fas fa-arrow-left"></i></button>
-                        <div class="search-wrapper"></div>
-                    </div>
-                    <h2 style="margin-bottom: 20px;">Order Confirmed!</h2>
-                    <div style="background: white; padding: 20px; border-radius: 10px;">
-                        <p><strong>Order ID:</strong> ${order.orderId}</p>
-                        <p><strong>Items:</strong> ${order.items.map(item => `${item.name} (x${item.quantity})`).join(', ')}</p>
-                        <p><strong>Total:</strong> KES ${order.total}</p>
-                        <p><strong>Delivery to:</strong> ${order.location}</p>
-                        <p><strong>Estimated Delivery:</strong> ${order.schedule === 'now' ? order.estTime : order.schedule === '12pm' ? '12 PM' : '6 PM'}</p>
-                        <p><strong>Phone:</strong> ${order.phone}</p>
-                        <button style="width: 100%; padding: 15px; background: #9b59b6; color: white; border: none; border-radius: 5px; margin-top: 20px;" onclick="showRestaurantGrid()">Continue Ordering</button>
-                    </div>
-                </div>
-            `;
-        }
+    // Sync navigation stack
+    if (navigationStack.length > 1) {
+        navigationStack.pop(); // Back navigation
+    } else {
+        // At root, reset to restaurantGrid
+        navigationStack = ['restaurantGrid'];
+    }
 
+    currentView = view;
+
+    // Render the view
+    if (view === 'restaurantGrid') {
+        showRestaurantGrid();
+    } else if (view === 'restaurantMenu') {
+        showRestaurantMenu(state.id);
+    } else if (view === 'dishDetail') {
+        showDishDetail(state.id, state.restaurantId, state.category);
+    } else if (view === 'cart') {
+        showCart();
+    } else if (view === 'orderConfirmation') {
+        showOrderConfirmation(state.order);
+    }
+});
         // Initialize the page
         showRestaurantGrid();
     </script>
